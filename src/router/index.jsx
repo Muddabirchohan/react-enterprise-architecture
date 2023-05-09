@@ -12,7 +12,7 @@ import About from "../components/About/about";
 import App from "../App";
 
 const RouterDefault = () => (
-  <Router>
+  <Router basename="/react-enterprise-architecture">
     <Routes>
     {/* <Route path="/api/v1/app/login" element={<MainSection/>} /> */}
 
