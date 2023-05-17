@@ -1,29 +1,38 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-  Link,
-} from "react-router-dom";
-import PageLayout from "../layouts/pageLayout";
+import React, { Fragment, useContext, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "../components/About/about";
-import App from "../App";
+import PrivateRoute from "./privateRoute";
+import Home from "../components/Home/Home";
+import { AuthContext } from "../auth/AuthContext";
 
-const RouterDefault = () => (
-  <Router basename="/react-enterprise-architecture">
-    <Routes>
-    {/* <Route path="/api/v1/app/login" element={<MainSection/>} /> */}
+const RouterDefault = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
-      <Route path="/" element={<PageLayout />}>
-      <Route path="/" element={<App/>} />
+  return (
+    // <Router basename="/react-enterprise-architecture">
+    //   <Routes>
+    //   <Route exact path="/" element={<About />} />
 
-        <Route path="/api/v1/about" element={<About/>} />
+    //       <Route exact path="/about" element={<PrivateRoute />}>
+    //     </Route>
+    //   </Routes>
+    // </Router>
+    <Router>
+      <Fragment>
+        <Routes>
+          <Route exact path="/home" element={<Home />} />
 
-      </Route>
-    </Routes>
-  </Router>
-);
+          <Route
+            exact
+            path="/about"
+            element={<PrivateRoute isAuthenticated={isAuthenticated} />}
+          >
+            <Route exact path="" element={<About />} />
+          </Route>
+        </Routes>
+      </Fragment>
+    </Router>
+  );
+};
 
-export default RouterDefault
+export default RouterDefault;

@@ -1,19 +1,16 @@
 import {
-    MenuFoldOutlined,
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
   } from '@ant-design/icons';
-  import { Button, Layout, Menu, theme } from 'antd';
+  import {  Layout, Menu } from 'antd';
   import { useState } from 'react';
   import classes from "./sideBar.module.scss"
 
-  const { Header, Sider, Content } = Layout;
+  const {  Sider } = Layout;
   const SideBar = () => {
-    const [collapsed, setCollapsed] = useState(false);
-    const {
-      token: { colorBgContainer },
-    } = theme.useToken();
+    const [collapsed] = useState(false);
+
     return (
         <>
         <div >
