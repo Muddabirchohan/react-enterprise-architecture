@@ -1,7 +1,6 @@
 {
   "name": "react-enterp",
   "version": "0.1.0",
-  "homepage": "",
   "private": true,
   "dependencies": {
     "@fullcalendar/core": "^6.1.7",
