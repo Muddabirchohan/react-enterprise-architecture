@@ -28,6 +28,7 @@ const RouterDefault = () => {
             element={<PrivateRoute isAuthenticated={isAuthenticated} />}
           >
             <Route exact path="" element={<About />} />
+            
           </Route>
         </Routes>
       </Fragment>
