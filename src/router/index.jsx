@@ -17,7 +17,7 @@ const RouterDefault = () => {
     //     </Route>
     //   </Routes>
     // </Router>
-    <Router>
+    <Router basename="/react-enterprise-architecture">
       <Fragment>
         <Routes>
           <Route exact path="/home" element={<Home />} />
