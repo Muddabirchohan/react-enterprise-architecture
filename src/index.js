@@ -1,14 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import RouterDefault from './router';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import RouterDefault from "./router";
+import { AuthProvider } from "./auth/AuthContext";
+import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { Provider } from "react-redux";
+import store from "./store/index"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const queryClient = new QueryClient();
+
+
 root.render(
   <React.StrictMode>
-    <RouterDefault />
+    {/* <QueryClientProvider client={queryClient}> */}
+    <Provider store={store}>
+      <AuthProvider>
+        <RouterDefault />
+      </AuthProvider>
+      </Provider>
+    {/* </QueryClientProvider> */}
   </React.StrictMode>
 );
 

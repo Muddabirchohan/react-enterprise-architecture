@@ -1,28 +1,30 @@
 import {
-    MenuFoldOutlined,
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined,
   } from '@ant-design/icons';
-  import { Button, Layout, Menu, theme } from 'antd';
+  import {  Layout, Menu } from 'antd';
   import { useState } from 'react';
   import classes from "./sideBar.module.scss"
 
-  const { Header, Sider, Content } = Layout;
+  const {  Sider } = Layout;
   const SideBar = () => {
-    const [collapsed, setCollapsed] = useState(false);
-    const {
-      token: { colorBgContainer },
-    } = theme.useToken();
+    const [collapsed] = useState(false);
+
     return (
         <>
         <div >
             <Sider
+              style={{ 
+                // overflow: 'auto',
+                // height: '100%',
+                position: 'fixed',
+                left: 0,
+            }}
             className={`${classes.sidebarParent}`}
-            height={100}
             trigger={null} collapsible collapsed={collapsed}>
             <Menu    
-                style={{ width: 280 , height: '100vh'}}
+                style={{ width: 250 , height: '100vh'}}
 
                 theme="dark"
                 mode="inline"
@@ -31,18 +33,18 @@ import {
                     {
                         key: '1',
                         icon: <UserOutlined />,
-                        label: 'nav 1',
+                        label: 'Products',
                         
                     },
                     {
                         key: '2',
                         icon: <VideoCameraOutlined />,
-                        label: 'nav 2',
+                        label: 'Cart',
                     },
                     {
                         key: '3',
                         icon: <UploadOutlined />,
-                        label: 'nav 3',
+                        label: 'Trending',
                     },
                     
                 ]} />
