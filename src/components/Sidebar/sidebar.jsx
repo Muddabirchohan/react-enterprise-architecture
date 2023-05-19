@@ -15,11 +15,16 @@ import {
         <>
         <div >
             <Sider
+              style={{ 
+                // overflow: 'auto',
+                // height: '100%',
+                position: 'fixed',
+                left: 0,
+            }}
             className={`${classes.sidebarParent}`}
-            height={100}
             trigger={null} collapsible collapsed={collapsed}>
             <Menu    
-                style={{ width: 280 , height: '100vh'}}
+                style={{ width: 250 , height: '100vh'}}
 
                 theme="dark"
                 mode="inline"
@@ -28,18 +33,18 @@ import {
                     {
                         key: '1',
                         icon: <UserOutlined />,
-                        label: 'nav 1',
+                        label: 'Products',
                         
                     },
                     {
                         key: '2',
                         icon: <VideoCameraOutlined />,
-                        label: 'nav 2',
+                        label: 'Cart',
                     },
                     {
                         key: '3',
                         icon: <UploadOutlined />,
-                        label: 'nav 3',
+                        label: 'Trending',
                     },
                     
                 ]} />

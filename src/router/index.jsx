@@ -4,6 +4,8 @@ import About from "../components/About/about";
 import PrivateRoute from "./privateRoute";
 import Home from "../components/Home/Home";
 import { AuthContext } from "../auth/AuthContext";
+import Products from "../pages/products/products";
+import ProductLayout from "../layouts/productLayout";
 
 const RouterDefault = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -21,6 +23,7 @@ const RouterDefault = () => {
       <Fragment>
         <Routes>
           <Route exact path="/home" element={<Home />} />
+          <Route exact path="/products" element={<ProductLayout />} />
 
           <Route
             exact

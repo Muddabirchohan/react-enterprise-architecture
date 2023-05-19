@@ -1,0 +1,23 @@
+.productParent {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .singleParent {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .img {
+    width: 144px;
+    height: 138px;
+  }
+
+  .title {
+    width: 250px;
+    height:70px;
+  }
+
+}
