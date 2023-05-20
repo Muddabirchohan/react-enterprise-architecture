@@ -28,7 +28,7 @@ export default function Products() {
 
     const productState = useSelector((state) => state);
 
-    const {products,errors,loadig} = productState
+    const {products,errors,loading} = productState
 
 
     useEffect(()=>{
@@ -40,7 +40,7 @@ export default function Products() {
   return (
     <div>
       <Suspense fallback={<span> .... </span>}>
-        <ProductsList data={products} loadig={loadig} error={errors} />
+        <ProductsList data={products} loading={loading} error={errors} />
       </Suspense>
     </div>
   );

@@ -20,6 +20,7 @@ import {
                 // height: '100%',
                 position: 'fixed',
                 left: 0,
+                top: 60
             }}
             className={`${classes.sidebarParent}`}
             trigger={null} collapsible collapsed={collapsed}>

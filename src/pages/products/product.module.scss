@@ -2,22 +2,38 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  text-align: center;
 
   .singleParent {
-    margin-left: 50px;
+    margin: 45px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
   }
 
   .img {
-    width: 144px;
-    height: 138px;
+    width: 154px;
+    height: 158px;
   }
 
   .title {
     width: 250px;
     height:70px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #005bb1;
+  }
+
+  .price {
+    width: 69px;
+    height: 32px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    background-color: #005bb1;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
   }
 
 }
