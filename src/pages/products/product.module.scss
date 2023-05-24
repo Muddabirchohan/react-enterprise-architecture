@@ -3,12 +3,30 @@
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
+  margin: 25px;
 
   .singleParent {
-    margin: 45px;
+    margin: 25px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    padding: 12px;
+    border-radius: 12%;
+    border: 6px solid #e8f4ff;
+
+    .button:hover {
+        background-color: #e8f4ff !important;
+        color: black !important;
+        border: 1px solid black;
+
+    }
+
+
+  }
+
+  
+  .singleParent:hover {
+    background-color: #e8f4ff;
   }
 
   .img {
@@ -18,19 +36,19 @@
 
   .title {
     width: 250px;
-    height:70px;
-    font-size: 16px;
+    height:55px;
+    font-size: 14px;
     font-weight: bolder;
     color: #005bb1;
   }
 
   .price {
-    width: 69px;
+    width: 137px;
     height: 32px;
     font-size: 22px;
     font-weight: bold;
     border: 2px solid #ffffff;
-    background-color: #005bb1;
+    background-color: #a3a3a3;
     color: white;
     border-radius: 8px;
     text-align: center;

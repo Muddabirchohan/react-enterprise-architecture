@@ -1,0 +1,47 @@
+.cartParent {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+
+  
+    .singleParent {
+      margin: 45px;
+      display: flex;
+    flex-direction: row-reverse;
+
+    span{
+      padding: 20px;
+    
+    }
+
+    }
+  
+    .img {
+      width: 114px;
+      height: 108px;
+    }
+  
+    .title {
+      width: 250px;
+      height:70px;
+      font-size: 16px;
+      font-weight: bolder;
+      color: #005bb1;
+    }
+  
+    .price {
+      width: 69px;
+      height: 32px;
+      font-size: 22px;
+      font-weight: bold;
+      border: 2px solid #ffffff;
+      background-color: #005bb1;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+    }
+  
+  }
+  

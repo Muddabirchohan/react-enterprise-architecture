@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialStateValue = {
-    loading: false,
-    products: [],
-    errors: ""
+  loading: false,
+  products: [],
+  errors: "",
+  cart: [],
 };
-
 
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
   const response = await fetch("https://fakestoreapi.com/products");
@@ -14,38 +14,42 @@ export const fetchProducts = createAsyncThunk("products/fetch", async () => {
 });
 
 export const productSlice = createSlice({
-  name: "theme",
-  initialState: {
-    value: initialStateValue,
-  },
+  name: "productSlice",
+  initialState: initialStateValue,
   reducers: {
     setProducts: (state, action) => {
       if (action.payload) {
         state.value = action.payload;
       }
     },
+    addToCart: (state, action) => {
+        if (action.payload) {
+          state.cart = [...state.cart, action.payload];
+        }
+      }
   },
+
+
+
   extraReducers: (builder) => {
+    builder.addCase(fetchProducts.pending, (state) => {
+      state.loading = true;
+    });
 
-    builder.addCase(fetchProducts.pending , (state)=>{
-        state.loading = true
-    })
+    builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      state.loading = false;
+      state.products = action.payload;
+      state.errors = "";
+    });
 
-    builder.addCase(fetchProducts.fulfilled , (state,action)=>{
-        state.loading = false;
-        state.products = action.payload
-        state.errors = ""
-    })
-
-    builder.addCase(fetchProducts.rejected , (state,action)=>{
-        state.loading = false
-        state.products = []
-        state.errors =  action.error.message
-    })
-
-  }
+    builder.addCase(fetchProducts.rejected, (state, action) => {
+      state.loading = false;
+      state.products = [];
+      state.errors = action.error.message;
+    });
+  },
 });
 
-export const { setProducts } = productSlice.actions;
+export const { setProducts,addToCart } = productSlice.actions;
 
 export default productSlice.reducer;
