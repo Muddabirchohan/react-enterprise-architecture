@@ -2,22 +2,56 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  text-align: center;
+  margin: 25px;
 
   .singleParent {
-    margin-left: 50px;
+    margin: 25px;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    padding: 12px;
+    border-radius: 12%;
+    border: 6px solid #e8f4ff;
+
+    .button:hover {
+        background-color: #e8f4ff !important;
+        color: black !important;
+        border: 1px solid black;
+
+    }
+
+
+  }
+
+  
+  .singleParent:hover {
+    background-color: #e8f4ff;
   }
 
   .img {
-    width: 144px;
-    height: 138px;
+    width: 154px;
+    height: 158px;
   }
 
   .title {
     width: 250px;
-    height:70px;
+    height:55px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: #005bb1;
+  }
+
+  .price {
+    width: 137px;
+    height: 32px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    background-color: #a3a3a3;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
   }
 
 }

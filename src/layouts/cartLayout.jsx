@@ -3,8 +3,9 @@ import SideBar from "../components/Sidebar/sidebar";
 import { Col, Layout, Menu, Row } from "antd";
 import Products from "../pages/products/products";
 import Header from "../components/Header/Header";
+import Cart from "../pages/cart/cart";
 
-const ProductLayout = () => (
+const CartLayout = () => (
   <div>
 
     <Row> 
@@ -18,10 +19,10 @@ const ProductLayout = () => (
         <SideBar />
       </Col>
       <Col span={20}>
-        <Products />
+        <Cart/>
       </Col>
     </Row>
   </div>
 );
 
-export default ProductLayout;
+export default CartLayout;

@@ -4,10 +4,14 @@ import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../features/productSlice";
 import SideBar from "../../components/Sidebar/sidebar";
+import ProductsList from "../products/productsList";
+import classes from "./product.module.scss";
+import AppLoader from "../../common/Loader";
+import { CustomError } from "../../common/Error/CustomError";
 
-const ProductsList = React.lazy(() =>
-  import("../products/productsList")
-);
+// const ProductsList = React.lazy(() =>
+//   import("../products/productsList")
+// );
 
 // const fetchData = async () => {
 
@@ -28,20 +32,39 @@ export default function Products() {
 
     const productState = useSelector((state) => state);
 
-    const {products,errors,loadig} = productState
+    const {productReducer} = productState
+
+    const {products,errors,loading,error} = productReducer
+
 
 
     useEffect(()=>{
         dispatch(fetchProducts())
     },[])
 
+    if (loading)
+    return (
+      <div>
+        {" "}
+        <AppLoader />{" "}
+      </div>
+    );
+
+  if (errors)
+    return (
+      <div>
+        {" "}
+        <CustomError />{" "}
+      </div>
+    );
+
+
 
 
   return (
-    <div>
-      <Suspense fallback={<span> .... </span>}>
-        <ProductsList data={products} loadig={loadig} error={errors} />
-      </Suspense>
+    <div className={classes.productParent}>
+      {/* <Suspense fallback={<span> .... </span>}> */}
+        {products &&  products.map(item => <ProductsList data={item} error={errors} /> )}
     </div>
   );
 }
