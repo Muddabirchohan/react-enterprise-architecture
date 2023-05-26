@@ -6,7 +6,7 @@ import { fetchProducts } from "../../features/productSlice";
 import SideBar from "../../components/Sidebar/sidebar";
 import ProductsList from "../products/productsList";
 import classes from "./product.module.scss";
-import AppLoader from "../../common/Loader";
+import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";
 
 // const ProductsList = React.lazy(() =>

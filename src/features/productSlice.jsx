@@ -5,6 +5,7 @@ const initialStateValue = {
   products: [],
   errors: "",
   cart: [],
+  total: 0
 };
 
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
@@ -12,6 +13,15 @@ export const fetchProducts = createAsyncThunk("products/fetch", async () => {
   const data = await response.json();
   return data;
 });
+
+
+const calcTotal  = (cart) => {
+    
+
+    return cart.reduce((acc, curr)=> {
+        return (acc + (curr.price * curr.quantity));
+      },0)
+}
 
 export const productSlice = createSlice({
   name: "productSlice",
@@ -22,14 +32,38 @@ export const productSlice = createSlice({
         state.value = action.payload;
       }
     },
-    addToCart: (state, action) => {
-        if (action.payload) {
-          state.cart = [...state.cart, action.payload];
+
+    setSingleProduct: (state,action) => {
+        if(action.payload){
+            state.singleProduct = state.products.find(item => item.id === action.payload)
         }
+    },
+
+    addToCart: (state, action) => {
+      if (action.payload) {
+        action.payload.quantity = 1;
+        state.cart = [...state.cart, action.payload];
+        const total = calcTotal(state.cart)
+        state.total = total
       }
+    },
+
+    icreaseQuantity: (state, action) => {
+      if (action.payload) {
+        state.cart = state.cart.map((obj) => obj.id === Number(action.payload.id) ? { ...obj, quantity: action.payload.quantity } : obj);
+        const total = calcTotal(state.cart)
+        state.total = total
+      }
+
+    },
+
+    deleteFromCart: (state,action) => {
+        state.cart = state.cart.filter(item => item.id !== action.payload);
+        const total = calcTotal(state.cart)
+        state.total = total  
+    }
+
   },
-
-
 
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.pending, (state) => {
@@ -50,6 +84,6 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setProducts,addToCart } = productSlice.actions;
+export const { setProducts, addToCart,icreaseQuantity,deleteFromCart,setSingleProduct} = productSlice.actions;
 
 export default productSlice.reducer;

@@ -6,6 +6,8 @@ import { AuthProvider } from "./auth/AuthContext";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { Provider } from "react-redux";
 import store from "./store/index"
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,7 +22,10 @@ root.render(
       <AuthProvider>
         <RouterDefault />
       </AuthProvider>
+      <ToastContainer />
+
       </Provider>
+
     {/* </QueryClientProvider> */}
   </React.StrictMode>
 );

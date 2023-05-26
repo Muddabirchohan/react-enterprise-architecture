@@ -1,47 +1,65 @@
+
+.totalStrip {
+    padding: 10px;
+    display: flex;
+    background-color: rgb(203 203 203 / 35%);
+    font-size: 24px;
+    padding-left: 20px;
+    color: #4e5eaf;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 70px;
+ 
+  }
+
 .cartParent {
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 20px;
-
-  
-    .singleParent {
-      margin: 45px;
-      display: flex;
-    flex-direction: row-reverse;
-
-    span{
-      padding: 20px;
     
+
+  .nameAndPrice {
+    padding-top: 45px;
+
+    .name {
+      font-size: 16px;
+      color: #33699d;
+      font-weight: bolder;
     }
 
-    }
-  
-    .img {
-      width: 114px;
-      height: 108px;
-    }
-  
-    .title {
-      width: 250px;
-      height:70px;
-      font-size: 16px;
-      font-weight: bolder;
-      color: #005bb1;
-    }
-  
     .price {
-      width: 69px;
-      height: 32px;
-      font-size: 22px;
+      font-size: 14px;
       font-weight: bold;
-      border: 2px solid #ffffff;
-      background-color: #005bb1;
-      color: white;
+      color: #8d8080;
       border-radius: 8px;
-      text-align: center;
+      text-align: start;
+      line-height: 5px;
     }
-  
   }
-  
+
+  .singleParent {
+    // margin: 45px;
+    // display: flex;
+    // flex-direction: row-reverse;
+
+    // span {
+    //   padding: 20px;
+    // }
+
+    // background-color: silver;
+    margin-left: 30px;
+  }
+
+  .img {
+    width: 154px;
+    height: 178px;
+  }
+
+  .title {
+    width: 250px;
+    height: 70px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #005bb1;
+  }
+}
