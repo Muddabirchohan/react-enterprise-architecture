@@ -4,7 +4,7 @@ import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../features/productSlice";
 import SideBar from "../../components/Sidebar/sidebar";
-import ProductsList from "../products/productsList";
+import ProductsList from "./ProductList/productsList";
 import classes from "./product.module.scss";
 import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";

@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import store from "./store/index"
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+// import 'react-credit-cards-2/dist/es/styles-compiled.css';
+import 'react-credit-cards-2/dist/lib/styles.scss';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
