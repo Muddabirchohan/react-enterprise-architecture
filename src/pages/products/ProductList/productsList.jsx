@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CustomError } from "../../common/Error/CustomError";
-import AppLoader from "../../common/Loader/Loader";
-import { addToCart, setSingleProduct } from "../../features/productSlice";
-import { itemExistArr, nameSplitter } from "../../utils/utils";
-import classes from "./product.module.scss";
+import { CustomError } from "../../../common/Error/CustomError";
+import AppLoader from "../../../common/Loader/Loader";
+import { addToCart, setSingleProduct } from "../../../features/productSlice";
+import { itemExistArr, nameSplitter } from "../../../utils/utils";
+import classes from "./../product.module.scss";
 import { Button, Spin } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
-import { setCurrentView } from "../../features/sideBarSlice";
+import { setCurrentView } from "../../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
 
 function ProductsList({ data: { id, title, price, image } }) {

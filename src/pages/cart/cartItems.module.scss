@@ -16,7 +16,10 @@
 
 .cartParent {
 
-    
+    .checkoutBtn{
+        display: flex;
+        justify-content: right;
+    }
 
   .nameAndPrice {
     padding-top: 45px;
@@ -62,4 +65,7 @@
     font-weight: bolder;
     color: #005bb1;
   }
+
+
+
 }
