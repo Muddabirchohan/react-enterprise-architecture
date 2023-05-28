@@ -32,8 +32,8 @@ const PaymentForm = () => {
       />
       <form>
         <Input
-          type="number"
           name="number"
+          maxLength={16}
           placeholder="Card Number"
           value={state.number}
           onChange={handleInputChange}

@@ -6,9 +6,9 @@ import { Button, Col, Divider, Row, Spin } from "antd";
 import { useState } from "react";
 import { setCurrentView } from "../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
-import OrderSummary from "./orderSummary";
-import CheckoutCart from "./checkoutCart";
-import PaymentForm from "./paymentDetails";
+import OrderSummary from "./orderSummary/orderSummary";
+import CheckoutCart from "./checkoutCart/checkoutCart";
+import PaymentForm from "./paymentDetails/paymentDetails";
 
 function Checkout() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function Checkout() {
 
   const { productReducer } = productState;
 
-  const { cart, errors, total } = productReducer;
+  const { cart, total } = productReducer;
 
   const navigate = useNavigate();
 
@@ -35,12 +35,16 @@ function Checkout() {
           <Col span={4} pull={4}>
             <div className={classes.order}>
               <OrderSummary total={total} classes={classes} />
-              <Button> Order Confirm </Button>
-              </div>
+              <Button onClick={() => {
+                 navigate("/order")
+                 dispatch(setCurrentView("order"))
+              }}>
+                {" "}
+                Order Confirm{" "}
+              </Button>
+            </div>
           </Col>
         </Row>
-
-
       </div>
     </div>
   );

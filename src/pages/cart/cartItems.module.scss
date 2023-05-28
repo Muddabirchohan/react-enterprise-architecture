@@ -17,8 +17,9 @@
 .cartParent {
 
     .checkoutBtn{
-        display: flex;
-        justify-content: right;
+        margin-left: 100px;
+        margin-right: 100px;
+        // justify-content: right;
     }
 
   .nameAndPrice {
@@ -54,8 +55,9 @@
   }
 
   .img {
-    width: 154px;
-    height: 178px;
+    margin-top: 20px;
+    width: 140px;
+    height: 140px;
   }
 
   .title {

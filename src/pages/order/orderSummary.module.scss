@@ -1,0 +1,138 @@
+.orderSummaryParent {
+  margin: 8%;
+
+  .orderButtonWrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .buttonPay {
+      width: 35%;
+      height: 12%;
+      background-color: #787878;
+      color: white;
+      border-radius: 0%;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .buttonOrder {
+      background-color: orangered;
+      width: 35%;
+      height: 12%;
+      color: white;
+      border-radius: 0%;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  .orderHead {
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 20px;
+  }
+
+  .orderHeadItems {
+    color: darkslategray;
+    font-size: 16px;
+    font-weight: 600;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .subHead {
+    color: darkslategray;
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 25px;
+  }
+
+  .title {
+    width: 250px;
+    height: 70px;
+    font-size: 12px;
+    font-weight: bolder;
+    color: #005bb1;
+  }
+
+  .totalStrip {
+    padding: 10px;
+    display: flex;
+    background-color: rgb(203 203 203 / 35%);
+    font-size: 12px;
+    padding-left: 20px;
+    color: #4e5eaf;
+    font-weight: 700;
+    justify-content: space-between;
+    margin-left: 90px;
+    margin-right: 90px;
+    margin-top: 70px;
+  }
+
+  .orderTitle {
+    font-size: 30px;
+    font-weight: 600;
+    color: cornflowerblue;
+  }
+
+  .checkoutBtn {
+    margin-left: 100px;
+    margin-right: 100px;
+    // justify-content: right;
+  }
+
+  .nameAndPrice {
+    padding-top: 20px;
+
+    .name {
+      font-size: 10px;
+      color: #33699d;
+      font-weight: bolder;
+    }
+
+    .price {
+      font-size: 10px;
+      font-weight: bold;
+      color: #8d8080;
+      border-radius: 8px;
+      text-align: start;
+      line-height: 12px;
+    }
+  }
+
+  .singleParent {
+    margin-left: 30px;
+  }
+
+  .img {
+    margin-top: 20px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .totalPrice {
+    // width: 250px;
+    // height: 70px;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #767676;
+    padding: 22px;
+    text-align: right;
+  }
+
+  .overflowContainer {
+    overflow-y: auto;
+    height: 500px;
+    overflow-x: hidden;
+  }
+
+
+  .overflowContainer::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 5%;
+  }
+  .overflowContainer::-webkit-scrollbar-thumb {
+    background-color: silver;
+  }
+}

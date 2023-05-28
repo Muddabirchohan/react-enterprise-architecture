@@ -1,11 +1,11 @@
-import { Col, Row } from "antd";
+import { Col, Divider, Row } from "antd";
 import React from "react";
-import PaymentForm from "./paymentDetails";
+import PaymentForm from "../paymentDetails/paymentDetails";
 
-export default function OrderSummary({classes,total}) {
+export default function OrderSummary({ classes, total }) {
   return (
     <div className={classes.orderSummary}>
-      <Row >
+      <Row>
         <Col span={12}>
           <p> sub total </p>
           <p> Tax </p>
@@ -22,8 +22,9 @@ export default function OrderSummary({classes,total}) {
           <p> 25 % </p>
         </Col>
 
-        <PaymentForm/>
+        <Divider style={{ borderBottom: '1px solid #ffffff' }} />
 
+        <PaymentForm />
       </Row>
     </div>
   );

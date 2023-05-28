@@ -2,7 +2,7 @@ import { Col, Divider, Input, Popconfirm, Row } from "antd";
 import { CustomError } from "../../common/Error/CustomError";
 import AppLoader from "../../common/Loader/Loader";
 import { nameSplitter } from "../../utils/utils";
-import classes from "./cartItems.module.scss";
+import classes from "./orderSummary.module.scss";
 import { addToCart, deleteFromCart, icreaseQuantity } from "../../features/productSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -12,8 +12,9 @@ DeleteOutlined
   } from '@ant-design/icons';
 import ConfirmPopup from "../../common/CofirmPopup/confirmPopup";
 
-function CartItems({ data, error }) {
+function CartItemsOrder({ data, error }) {
   const { title, price, image, quantity, id } = data;
+  
 
   const dispatch = useDispatch();
 
@@ -63,61 +64,43 @@ function CartItems({ data, error }) {
               <div className={classes.nameAndPrice}>
                 <div className={classes.name}>{nameSplitter(title, 20)}</div>
                 <div className={classes.price}>
-                  <p> color: {color[Math.floor(Math.random() * 2) + 1]}</p>
-                  <p> size: {size[Math.floor(Math.random() * 2) + 1]}</p>
-                  <p> {stock[Math.floor(Math.random() * 1) + 1]}</p>
+                  <span>  {color[Math.floor(Math.random() * 2) + 1]},</span>
+                  <span>  {size[Math.floor(Math.random() * 2) + 1]},</span>
+                  <span> {stock[Math.floor(Math.random() * 1) + 1]}</span>
                 </div>
               </div>
             </Col>
           </Row>
         </Col>
 
-        <Col className="gutter-row" span={3} pull={3}>
+        <Col className="gutter-row" span={5} pull={3}>
           <div className={classes.nameAndPrice}>
             <div className={classes.name}>Quantity</div>
             <div className={classes.price}>
               <p>
                 {" "}
-                <Input value={quan} onChange={onChange} maxLength={10} />
+               <p> {quantity} </p>
               </p>
             </div>
           </div>
         </Col>
 
-        <Col className="gutter-row" span={3} pull={2}>
+        <Col className="gutter-row" span={5} pull={2}>
           <div className={classes.nameAndPrice}>
             <div className={classes.name}>Price</div>
             <div className={classes.price}>
                 <p>
-            {(price * quan).toFixed(0)}
+            {(price * quan).toFixed(0)} $
             </p>
             </div>
           </div>
         </Col>
 
-        
-        <Col className="gutter-row" span={3} pull={2}>
-          <div className={`${classes.nameAndPrice} mt-3`} >
-
-
-            <ConfirmPopup
-            title="Delete the task"
-            description="Are you sure to delete this task?"
-            onConfirm={confirm}
-            onCancel={cancel}
-            okText="Yes"
-            cancelText="No"
-            
-            />
-       
-   
-          </div>
-        </Col>
+ 
       </Row>
 
-      <Divider />
     </div>
   );
 }
 
-export default CartItems;
+export default CartItemsOrder;

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialStateValue = {
-    currentTab: ""
+    currentTab: "Products"
 };
 
 
