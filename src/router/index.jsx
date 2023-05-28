@@ -29,6 +29,7 @@ const RouterDefault = () => {
           <Route exact path="/products/:id" element={<PageLayout />} />
           <Route exact path="/cart" element={<PageLayout />} />
           <Route exact path="/checkout" element={<PageLayout />} />
+          <Route exact path="/order" element={<PageLayout />} />
 
 
           <Route

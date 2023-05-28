@@ -1,6 +1,6 @@
 import { Col, Row } from "antd";
 import React from "react";
-import { nameSplitter } from "../../utils/utils";
+import { nameSplitter } from "../../../utils/utils";
 
 export default function CheckoutCart({classes,data}) {
 

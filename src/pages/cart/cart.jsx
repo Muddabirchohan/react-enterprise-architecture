@@ -49,6 +49,7 @@ export default function Cart() {
 
         <div className={classes.checkoutBtn}>
           <Button
+          style={{ width: '100%' ,backgroundColor: "rgba(203, 203, 203, 0.35)"}}
             onClick={() => {
               dispatch(setCurrentView("checkout"));
               navigate("/checkout");
