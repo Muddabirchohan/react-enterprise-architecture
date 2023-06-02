@@ -4,11 +4,13 @@ import AppLoader from "../../../common/Loader/Loader";
 import { addToCart, setSingleProduct } from "../../../features/productSlice";
 import { itemExistArr, nameSplitter } from "../../../utils/utils";
 import classes from "./../product.module.scss";
-import { Button, Spin } from "antd";
+import { Button, Drawer, Spin } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 import { setCurrentView } from "../../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
+import MiniCart from "../../../components/miniCart/miniCart";
+import { useDrawerStore } from "../../../store/rootZustand";
 
 function ProductsList({ data: { id, title, price, image } }) {
   const dispatch = useDispatch();
@@ -16,19 +18,22 @@ function ProductsList({ data: { id, title, price, image } }) {
 
   const productState = useSelector((state) => state);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+  const setDrawer = useDrawerStore((state) => state.setDrawerState);
+  const drawer = useDrawerStore((state) => state.drawerState);
 
   const setSingle = (e) => {
     e.stopPropagation();
-    dispatch(setCurrentView(`details`))
-    dispatch(setSingleProduct(id))
-    navigate(`/products/${id}`)
-  }
+    dispatch(setCurrentView(`details`));
+    dispatch(setSingleProduct(id));
+    navigate(`/products/${id}`);
+  };
 
   const addToCartHandler = (e) => {
     e.stopPropagation();
-    addTo({ id, title, price, image })
-  }
+    addTo({ id, title, price, image });
+  };
 
   const addTo = ({ id, title, price, image }) => {
     setLoader(true);
@@ -61,15 +66,19 @@ function ProductsList({ data: { id, title, price, image } }) {
           progress: undefined,
           theme: "colored",
         });
+        setDrawer();
       }, 1000);
+
+      setTimeout(() => {
+          setDrawer()
+      }, 10000);
+
     }
   };
 
   return (
-    <div
-      className={classes.singleParent}
-      onClick={(e) => setSingle(e)}
-    >
+    <div> 
+    <div className={classes.singleParent} onClick={(e) => setSingle(e)}>
       <span>
         {" "}
         <Button
@@ -90,6 +99,11 @@ function ProductsList({ data: { id, title, price, image } }) {
       <span>
         <img src={image} className={classes.img} />
       </span>
+
+          </div>
+               {drawer &&
+                <MiniCart />}
+
     </div>
   );
 }
