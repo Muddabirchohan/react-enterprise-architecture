@@ -12,8 +12,7 @@ export default function ContentSection({type}) {
    const navigate = useNavigate() 
     
 useEffect(()=>{
-
-    renderContent(type)
+    renderContent()
 },[navigate])
 
 
@@ -28,7 +27,7 @@ useEffect(()=>{
                     return <ProductDetail/>
 
             case "Cart":
-                return <Cart />
+                return <Cart type={undefined} />
             
             case "checkout":
                 return <Checkout/>

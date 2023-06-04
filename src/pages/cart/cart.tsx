@@ -18,8 +18,6 @@ import { useNavigate } from "react-router-dom";
 // );
 
 export default function Cart({type}) {
-
-
     
   const dispatch = useDispatch();
 
@@ -36,7 +34,6 @@ export default function Cart({type}) {
   if (!chrckEmptyCart) return <EmptyState />;
 
     
-
   return (
     <div>
       <div className={type !== "miniCart" ? classes.totalStrip : classes.totalStripMiniCart}>

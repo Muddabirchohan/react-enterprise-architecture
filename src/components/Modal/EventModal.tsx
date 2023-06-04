@@ -10,7 +10,7 @@ const EventModal = ({ isOpen, onClose ,setEvent , event}) => {
     };
   
     return (
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal open={isOpen} closable={onClose}>
         {/* <ModalHeader>Add Event</ModalHeader> */}
         {/* <ModalBody> */}
           <label>Title:</label>

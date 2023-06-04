@@ -16,6 +16,9 @@ import ReactGA from 'react-ga';
 
 
 function ProductsList({ data: { id, title, price, image } }) {
+
+
+  
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
@@ -67,7 +70,7 @@ function ProductsList({ data: { id, title, price, image } }) {
           value: 1, // Optional numeric value associated with the event
         });
 
-          
+
 
         toast.success(`item ${title} added to cart`, {
           position: "top-right",

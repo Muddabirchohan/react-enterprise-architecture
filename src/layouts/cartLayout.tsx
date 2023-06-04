@@ -19,7 +19,7 @@ const CartLayout = () => (
         <SideBar />
       </Col>
       <Col span={20}>
-        <Cart/>
+        <Cart type={undefined}/>
       </Col>
     </Row>
   </div>
