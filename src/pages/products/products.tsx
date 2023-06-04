@@ -8,41 +8,23 @@ import ProductsList from "./ProductList/productsList";
 import classes from "./product.module.scss";
 import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";
+import Product3D from "../../components/3d/Product3d";
+import useProduct from "./product.logic";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
 // );
 
 // const fetchData = async () => {
-
-
-
 //   const response = await fetch("https://fakestoreapi.com/products");
 //   const data = await response.json();
-
 //   return data;
 // };
 
 export default function Products() {
+  const { errors, products, loading } = useProduct();
 
-    const dispatch = useDispatch();
-
-
-//   const { data, isLoading, error } = useQuery("myData", fetchData);
-
-    const productState = useSelector((state) => state);
-
-    const {productReducer} = productState
-
-    const {products,errors,loading,error} = productReducer
-
-
-
-    useEffect(()=>{
-        dispatch(fetchProducts())
-    },[])
-
-    if (loading)
+  if (loading)
     return (
       <div>
         {" "}
@@ -58,13 +40,11 @@ export default function Products() {
       </div>
     );
 
-
-
-
   return (
     <div className={classes.productParent}>
       {/* <Suspense fallback={<span> .... </span>}> */}
-        {products &&  products.map(item => <ProductsList data={item} error={errors} /> )}
+      {products &&
+        products.map((item) => <ProductsList data={item} error={errors} />)}
     </div>
   );
 }

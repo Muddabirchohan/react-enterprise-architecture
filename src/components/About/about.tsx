@@ -36,6 +36,7 @@ const MyCalendar = () => {
       title: "",
       start: "",
       end: "",
+      id: ""
     });
   };
 
@@ -56,7 +57,7 @@ const MyCalendar = () => {
       title: newEvent.title,
       start: new Date(newEvent.start),
       end: new Date(newEvent.end),
-      id: Math.random(2),
+      id: Math.random(),
     };
     setEvents([...events, newEvents]);
 

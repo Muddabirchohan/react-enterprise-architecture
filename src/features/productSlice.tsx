@@ -1,6 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = {
+interface IState<T>  {
+  loading: boolean,
+  products: Array<T>,
+  errors: string,
+  cart: Array<T>,
+  total: number
+
+}
+
+
+const initialStateValue : IState<[]>  ={
   loading: false,
   products: [],
   errors: "",

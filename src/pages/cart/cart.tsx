@@ -17,7 +17,8 @@ import { useNavigate } from "react-router-dom";
 //   import("../cart/Cartitems")
 // );
 
-export default function Cart() {
+export default function Cart({type}) {
+    
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -33,23 +34,22 @@ export default function Cart() {
   if (!chrckEmptyCart) return <EmptyState />;
 
     
-
   return (
     <div>
-      <div className={classes.totalStrip}>
+      <div className={type !== "miniCart" ? classes.totalStrip : classes.totalStripMiniCart}>
         <span> Cart Total :</span>
         <span>{total.toFixed(0) || 0}</span>
       </div>
 
-      <div className={classes.cartParent}>
+      <div className={type !== "miniCart" ? classes.cartParent : classes.miniCartParent}>
         {cart &&
           cart.map((item) => (
-            <CartItems key={item.id} data={item} error={errors} />
+            <CartItems key={item.id} data={item} error={errors} type={type} />
           ))}
 
         <div className={classes.checkoutBtn}>
           <Button
-          style={{ width: '100%' ,backgroundColor: "rgba(203, 203, 203, 0.35)"}}
+          style={{ width: '100%'}}
             onClick={() => {
               dispatch(setCurrentView("checkout"));
               navigate("/checkout");

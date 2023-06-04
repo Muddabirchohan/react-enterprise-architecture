@@ -3,7 +3,7 @@ import { AuthContext } from "../../auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const { login, isAuthenticated } = useContext(AuthContext);
+  const { login } = useContext(AuthContext);
 
   const navigate = useNavigate()
 

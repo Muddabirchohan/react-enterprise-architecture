@@ -1,0 +1,27 @@
+.successParent {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+
+    .img {
+        max-width: 50%;
+        min-width: 50%;
+    }
+  
+
+    span{
+        font-weight: 900;
+        font-size: 24px;
+    }
+
+    .title {
+    //   width: 250px;
+    //   height:70px;
+      font-size: 17px;
+    }
+  
+  }
+  
