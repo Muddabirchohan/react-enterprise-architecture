@@ -5,6 +5,7 @@ import { Button, Col, Row, Spin } from "antd";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 import classes from "./productDetail.module.scss";
+import Product3DViewer from "../../../components/3d/Product3d";
 
 function ProductDetail() {
   const dispatch = useDispatch();
@@ -56,9 +57,10 @@ function ProductDetail() {
   return (
     <div className={classes.productDetailParent}>
       <Row gutter={16}>
-        <Col className="gutter-row" span={14} offset={2}> 
+        <Col className="gutter-row" span={14} offset={2}>
           <div>
             {" "}
+            {/* <Product3DViewer productImage={image}/> */}
             <img src={image} className={classes.img} />
           </div>
         </Col>
@@ -69,8 +71,6 @@ function ProductDetail() {
             <p className={classes.title}> {nameSplitter(title, 100)}</p>
             <p className={classes.detail}> {description} </p>
             <p className={classes.price}> {price} /$ </p>
-
-
             <Button
               className={classes.button}
               style={{

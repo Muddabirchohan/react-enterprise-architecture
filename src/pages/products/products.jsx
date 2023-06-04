@@ -8,6 +8,7 @@ import ProductsList from "./ProductList/productsList";
 import classes from "./product.module.scss";
 import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";
+import Product3D from "../../components/3d/Product3d";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")

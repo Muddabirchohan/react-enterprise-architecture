@@ -11,6 +11,9 @@ import { setCurrentView } from "../../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
 import MiniCart from "../../../components/miniCart/miniCart";
 import { useDrawerStore } from "../../../store/rootZustand";
+import Product3DViewer from "../../../components/3d/Product3d";
+import ReactGA from 'react-ga';
+
 
 function ProductsList({ data: { id, title, price, image } }) {
   const dispatch = useDispatch();
@@ -56,6 +59,16 @@ function ProductsList({ data: { id, title, price, image } }) {
       setTimeout(() => {
         setLoader(false);
         dispatch(addToCart({ id, title, price, image }));
+
+        ReactGA.event({
+          category: 'E-commerce',
+          action: 'Add to Cart',
+          label: 'Product Name',
+          value: 1, // Optional numeric value associated with the event
+        });
+
+          
+
         toast.success(`item ${title} added to cart`, {
           position: "top-right",
           autoClose: 5000,
@@ -97,6 +110,7 @@ function ProductsList({ data: { id, title, price, image } }) {
       <span className={classes.title}> {nameSplitter(title, 45)}</span>
       <span className={classes.price}> {price} /$ </span>
       <span>
+          {/* <Product3DViewer productImage={image}/> */}
         <img src={image} className={classes.img} />
       </span>
 

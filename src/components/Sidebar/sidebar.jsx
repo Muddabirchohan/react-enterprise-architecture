@@ -51,7 +51,7 @@ const SideBar = () => {
           collapsed={collapsed}
         >
           <Menu
-            style={{ width: 250, height: "100vh" }}
+            style={{ width: 220, height: "100vh" }}
             theme="dark"
             mode="inline"
             defaultSelectedKeys={["1"]}

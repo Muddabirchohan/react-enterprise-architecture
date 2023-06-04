@@ -11,8 +11,16 @@ import { ToastContainer, toast } from 'react-toastify';
 // import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import 'react-credit-cards-2/dist/lib/styles.scss';
 import "./index.scss"
+import ReactGA from 'react-ga';
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+
+
+ReactGA.initialize('G-TKKDBJP15C');
+
+console.log("react ga",ReactGA)
 
 const queryClient = new QueryClient();
 
