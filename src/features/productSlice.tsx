@@ -8,6 +8,7 @@ interface IState<T>  {
   total: number,
   wishlist: Array<string>
 
+  
 }
 
 
