@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.wishlistParent {
+
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  margin: 25px;
+  margin-top: 80px;
+  font-family: 'Poppins';
+  font-weight: 400;
+
+  .singleParent {
+    margin: 25px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12%;
+    border: 6px solid #e8f4ff;
+    height: 230px;
+
+
+  }
+
+  
+
+  .img {
+    width: 124px;
+    height: 128px;
+
+  }
+
+  .title {
+    width: 250px;
+    height:55px;
+    font-size: 14px;
+    font-weight: bolder;
+    color: #005bb1;
+    
+  }
+
+  .price {
+    width: 137px;
+    height: 32px;
+    font-size: 22px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    background-color: #a3a3a3;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+
+  }
+
+  .deceased {
+    position: relative;
+    background: gray;
+    padding: 30px;
+    overflow: hidden; //hide overflow of pseudo elements
+    opacity: 0.6;
+}
+
+.deceased:before, .deceased:after {
+    position: absolute;
+    content: '';
+    background: silver;
+    display: block;
+    width: 350px;
+    height: 5px;
+    // -webkit-transform: rotate(-45deg);
+    transform: rotate(-135deg);
+    //center the X vertically and horizontally:
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+// .deceased:after {
+//     -webkit-transform: rotate(45deg);    
+//     transform: rotate(45deg);
+// }
+
+}

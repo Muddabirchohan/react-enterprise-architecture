@@ -19,7 +19,7 @@ const SideBar = () => {
   const navigate = useNavigate()
 
 
-  const keys = ["Products", "Cart", "Trending"];
+  const keys = ["Products", "Cart", "Trending","Wishlist"];
 
   const sideBarList = keys.map((item, index) => {
     return {

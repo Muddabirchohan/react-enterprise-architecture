@@ -5,8 +5,10 @@ interface IState<T>  {
   products: Array<T>,
   errors: string,
   cart: Array<T>,
-  total: number
+  total: number,
+  wishlist: Array<string>
 
+  
 }
 
 
@@ -15,7 +17,8 @@ const initialStateValue : IState<[]>  ={
   products: [],
   errors: "",
   cart: [],
-  total: 0
+  total: 0,
+  wishlist: []
 };
 
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
@@ -58,6 +61,15 @@ export const productSlice = createSlice({
       }
     },
 
+    addToWishLists: (state, action) => {
+      if (action.payload) {
+        // action.payload.quantity = 1;
+        state.wishlist = [...state.wishlist, action.payload];
+        // const total = calcTotal(state.cart)
+        // state.total = total
+      }
+    },
+
     icreaseQuantity: (state, action) => {
       if (action.payload) {
         state.cart = state.cart.map((obj) => obj.id === Number(action.payload.id) ? { ...obj, quantity: action.payload.quantity } : obj);
@@ -94,6 +106,6 @@ export const productSlice = createSlice({
   },
 });
 
-export const { setProducts, addToCart,icreaseQuantity,deleteFromCart,setSingleProduct} = productSlice.actions;
+export const { setProducts, addToCart,icreaseQuantity,deleteFromCart,setSingleProduct ,addToWishLists} = productSlice.actions;
 
 export default productSlice.reducer;
