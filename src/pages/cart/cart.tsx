@@ -31,14 +31,17 @@ export default function Cart({type}) {
 
   const chrckEmptyCart = cart && cart.length > 0;
 
-  if (!chrckEmptyCart) return <EmptyState />;
+  if (!chrckEmptyCart) return <EmptyState msg={"You'r Cart is currently empty ,add any item(s)"}  />;
+ 
 
     
   return (
     <div>
       <div className={type !== "miniCart" ? classes.totalStrip : classes.totalStripMiniCart}>
-        <span> Cart Total :</span>
-        <span>{total.toFixed(0) || 0}</span>
+        {type !== "miniCart" && 
+        
+        <><span> Cart Total :</span><span>{total.toFixed(0) || 0}</span></>} 
+        
       </div>
 
       <div className={type !== "miniCart" ? classes.cartParent : classes.miniCartParent}>
@@ -47,7 +50,7 @@ export default function Cart({type}) {
             <CartItems key={item.id} data={item} error={errors} type={type} />
           ))}
 
-        <div className={classes.checkoutBtn}>
+        <div className={type == "miniCart" ?  classes.checkoutBtn : classes.checkoutMini}>
           <Button
           style={{ width: '100%'}}
             onClick={() => {

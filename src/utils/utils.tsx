@@ -4,8 +4,8 @@ export const nameSplitter = (item,upto) => {
 };
 
 
-export const itemExistArr = (id,cart) => {
-    const ids = cart?.map((item) => item.id);
+export const itemExistArr = (id,dataList) => {
+    const ids = dataList?.map((item) => item.id);
 
     if (ids &&  ids.length > 0){
       return ids.includes(id);

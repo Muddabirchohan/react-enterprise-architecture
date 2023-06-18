@@ -12,6 +12,7 @@ import Cart from "../pages/cart/cart";
 import Checkout from "../pages/checkout/Checkout";
 import Order from "../pages/order/order";
 import ProductDetail from "../pages/products/ProductDetail/productDetail";
+import Wishlist from "src/pages/WishList/wishList";
 
 const RouterDefault = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -31,7 +32,7 @@ const RouterDefault = () => {
           <Route exact path="/" element={<PageLayout />} >
           <Route exact path="/products" element={<Products />} />
           <Route exact path="/products/:id" element={<ProductDetail />} />
-
+          <Route exact path="/wishlist" element={<Wishlist />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/order" element={<Order />} />
