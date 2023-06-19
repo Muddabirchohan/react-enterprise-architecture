@@ -8,10 +8,11 @@ import ProductsList from "./ProductList/productsList";
 // import classes from "./product.module.scss";
 import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";
-import Product3D from "../../components/3d/Product3d";
-// import useProduct from "./product.logic";
 import WishListItem from "./wishListItem/wishlistItems";
 import classes from "./wishlist.module.scss";
+import wishlistEmpty from "./../../assets/empty/wishlist-empty.png"
+import { EmptyState } from "src/common/EmptyState/emptyState";
+
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
@@ -26,6 +27,12 @@ import classes from "./wishlist.module.scss";
 export default function Wishlist() {
 
 const {wishlist} = useSelector(state => state.productReducer)
+
+
+const chrckEmptyCart = wishlist && wishlist.length > 0;
+
+if (!chrckEmptyCart) return <EmptyState msg={"You'r wishlist is currently empty ,add any item(s)"} image={wishlistEmpty} />;
+
 
 
   return (

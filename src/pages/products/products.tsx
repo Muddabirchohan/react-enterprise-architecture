@@ -28,7 +28,7 @@ export default function Products() {
     return (
       <div>
         {" "}
-        <AppLoader />{" "}
+        <AppLoader />
       </div>
     );
 
@@ -36,7 +36,7 @@ export default function Products() {
     return (
       <div>
         {" "}
-        <CustomError />{" "}
+        <CustomError />
       </div>
     );
 

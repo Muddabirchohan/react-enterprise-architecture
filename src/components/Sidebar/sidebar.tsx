@@ -2,6 +2,9 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  ShoppingCartOutlined ,
+  HeartOutlined,
+  UnorderedListOutlined 
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { useState } from "react";
@@ -9,6 +12,7 @@ import classes from "./sideBar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentView } from "../../features/sideBarSlice";
 import { Navigate, useNavigate } from "react-router-dom";
+
 
 const { Sider } = Layout;
 const SideBar = () => {
@@ -19,12 +23,14 @@ const SideBar = () => {
   const navigate = useNavigate()
 
 
-  const keys = ["Products", "Cart", "Trending","Wishlist"];
+  const keys = ["Products", "Cart", "Wishlist"];
+
+  const icons = [<UnorderedListOutlined/>,<ShoppingCartOutlined/>,<HeartOutlined />]
 
   const sideBarList = keys.map((item, index) => {
     return {
       key: index,
-      icon: <UserOutlined />,
+      icon: icons[index],
       label: item,
       onClick: () => {
         dispatch(setCurrentView(item))

@@ -26,9 +26,7 @@ const AppHeader = () => {
     <Header style={{ width: '100%', position: 'fixed', top: 0,right: 0, zIndex: 1 }}>
       <div className="logo" />
 
-
-
-
+    <p style={{color: "white",fontSize: 20,marginTop: "-5px"}}> E-Commerce App </p>
     </Header>
   );
 };
