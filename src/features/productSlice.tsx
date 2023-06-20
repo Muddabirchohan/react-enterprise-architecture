@@ -7,7 +7,10 @@ interface IState<T> {
   cart: Array<T>;
   total: number;
   wishlist: Array<string>;
-  singleProduct: any;
+  singleProduct: object;
+  loadingSingle: boolean;
+  errorSingle: string;
+
 }
 
 const initialStateValue: IState<[]> = {
@@ -18,6 +21,8 @@ const initialStateValue: IState<[]> = {
   total: 0,
   wishlist: [],
   singleProduct: {},
+  loadingSingle: false,
+  errorSingle: ""
 };
 
 export const fetchProducts = createAsyncThunk("products/fetch", async () => {
@@ -25,6 +30,15 @@ export const fetchProducts = createAsyncThunk("products/fetch", async () => {
   const data = await response.json();
   return data;
 });
+
+export const fetchSingle = createAsyncThunk(`products/single`, async (id) => {
+  console.log("asdadsa",id)
+  const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+  const data = await response.json();
+  console.log("Dataaa",data)
+  return data;
+});
+
 
 const calcTotal = (cart) => {
   return cart.reduce((acc, curr) => {
@@ -105,11 +119,33 @@ export const productSlice = createSlice({
       state.products = [];
       state.errors = action.error.message;
     });
+
+
+
+
+
+
+    builder.addCase(fetchSingle.pending, (state) => {
+      state.loadingSingle = true;
+    });
+
+    builder.addCase(fetchSingle.fulfilled, (state, action) => {
+      state.loadingSingle = false;
+      state.singleProduct = action.payload;
+      state.errorSingle = "";
+    });
+
+    builder.addCase(fetchSingle.rejected, (state, action) => {
+      state.loadingSingle = false;
+      state.singleProduct = [];
+      state.errorSingle = action.error.message;
+    });
+
+
   },
 });
 
 export const {
-  setProducts,
   addToCart,
   icreaseQuantity,
   deleteFromCart,

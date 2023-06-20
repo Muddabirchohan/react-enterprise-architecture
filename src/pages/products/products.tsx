@@ -9,7 +9,7 @@ import classes from "./product.module.scss";
 import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";
 import Product3D from "../../components/3d/Product3d";
-import useProduct from "./product.logic";
+import {useProduct} from "./product.logic";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")

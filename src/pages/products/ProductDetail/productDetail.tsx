@@ -6,18 +6,17 @@ import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 import classes from "./productDetail.module.scss";
 import Product3DViewer from "../../../components/3d/Product3d";
+import useProduct, { useProductSingle } from "../product.logic";
+import { useParams } from "react-router-dom";
+import AppLoader from "src/common/Loader/Loader";
+import { CustomError } from "src/common/Error/CustomError";
 
 function ProductDetail() {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
-  const productState = useSelector((state) => state);
-
-  const { productReducer } = productState;
-
-  const {
-    singleProduct: { id, title, price, image, description },
-  } = productReducer;
+  const params = useParams();
+  const data = useProductSingle(params.id);
 
   const addTo = ({ id, title, price, image }) => {
     setLoader(true);
@@ -54,13 +53,36 @@ function ProductDetail() {
     }
   };
 
+  if (!data) {
+    return;
+  }
+
+  if (data.loadingSingle)
+    return (
+      <div>
+        {" "}
+        <AppLoader />
+      </div>
+    );
+
+  if (data.errorSingle)
+    return (
+      <div>
+        {" "}
+        <CustomError />
+      </div>
+    );
+
+  const {
+    singleProduct: { image, id, title, description , price},
+  } = data;
+
   return (
     <div className={classes.productDetailParent}>
-      <Row gutter={16}>
+      <Row >
         <Col className="gutter-row" span={14} offset={2}>
           <div>
             {" "}
-            {/* <Product3DViewer productImage={image}/> */}
             <img src={image} className={classes.img} />
           </div>
         </Col>
@@ -79,7 +101,7 @@ function ProductDetail() {
                 width: "200px",
                 fontWeight: 700,
               }}
-              onClick={() => addTo({ id, title, price, image })}
+              // onClick={() => addTo({ id, title, price, image })}
             >
               {loader && <Spin />} Add{" "}
             </Button>

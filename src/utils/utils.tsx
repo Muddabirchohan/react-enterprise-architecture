@@ -1,5 +1,5 @@
 export const nameSplitter = (item,upto) => {
-  if (item.length > upto) return item.slice(0, upto) + "...";
+  if (item && item.length > upto) return item.slice(0, upto) + "...";
   return item;
 };
 
@@ -27,6 +27,5 @@ export const itemExistArr = (id,dataList) => {
       theme: "colored",
     });
 
-    
   }
 
