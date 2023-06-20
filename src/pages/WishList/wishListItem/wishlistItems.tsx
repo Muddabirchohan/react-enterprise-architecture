@@ -21,12 +21,6 @@ function WishListItem({ data }) {
 
   const navigate = useNavigate();
 
-  const setSingle = (e) => {
-    e.stopPropagation();
-    dispatch(setCurrentView(`details`));
-    dispatch(setSingleProduct(id));
-    navigate(`/products/${id}`);
-  };
 
   const addToCartHandler = (e) => {
     e.stopPropagation();
@@ -36,6 +30,8 @@ function WishListItem({ data }) {
   if (!data) {
     return;
   }
+
+
 
   const { title, price, image } = data;
 

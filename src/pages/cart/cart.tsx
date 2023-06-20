@@ -12,6 +12,7 @@ import AppLoader from "../../common/Loader/Loader";
 import { Button } from "antd";
 import { setCurrentView } from "../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
+import EmptyScreen from "./../../assets/empty/shopping-cart.png"
 
 // const CartItem = React.lazy(() =>
 //   import("../cart/Cartitems")
@@ -31,7 +32,7 @@ export default function Cart({type}) {
 
   const chrckEmptyCart = cart && cart.length > 0;
 
-  if (!chrckEmptyCart) return <EmptyState msg={"You'r Cart is currently empty ,add any item(s)"}  />;
+  if (!chrckEmptyCart) return <EmptyState msg={"You'r Cart is currently empty ,add any item(s)"} image={EmptyScreen} />;
  
 
     

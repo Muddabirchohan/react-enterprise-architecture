@@ -1,34 +1,34 @@
 import { useDispatch, useSelector } from "react-redux";
-import { CustomError } from "../../../common/Error/CustomError";
-import AppLoader from "../../../common/Loader/Loader";
-import { addToCart, addToWishLists, setSingleProduct } from "../../../features/productSlice";
+import {
+  addToCart,
+  addToWishLists,
+  removeFromWishlist,
+  setSingleProduct,
+} from "../../../features/productSlice";
 import { itemExistArr, nameSplitter } from "../../../utils/utils";
 import classes from "./../product.module.scss";
 import { Button, Col, Drawer, Row, Spin } from "antd";
-import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
 import { setCurrentView } from "../../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
 import MiniCart from "../../../components/miniCart/miniCart";
 import { useDrawerStore } from "../../../store/rootZustand";
-import Product3DViewer from "../../../components/3d/Product3d";
-import ReactGA from 'react-ga';
-import {
-  PlusCircleOutlined,
-
-  HeartTwoTone
-} from '@ant-design/icons';
-import Icon, { HomeOutlined } from '@ant-design/icons';
-
+import ReactGA from "react-ga";
+import { PlusCircleOutlined, HeartTwoTone } from "@ant-design/icons";
+import Icon, { HomeOutlined } from "@ant-design/icons";
+import Toast from "src/components/Toast/toastContainer";
 
 function ProductsList({ data: { id, title, price, image } }) {
-
-
-  
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
   const productState = useSelector((state) => state);
+
+  const [renderToast, setRenderToast] = useState({
+    state: false,
+    message: "",
+    type: "",
+  });
 
   const navigate = useNavigate();
 
@@ -47,24 +47,15 @@ function ProductsList({ data: { id, title, price, image } }) {
     addTo({ id, title, price, image });
   };
 
-
   const addToWishList = (e) => {
     e.stopPropagation();
     addToWishListHandler({ id, title, price, image });
-  }
+  };
 
   const addToWishListHandler = ({ id, title, price, image }) => {
     if (itemExistArr(id, productState.productReducer.wishlist)) {
-      toast.warn("already exist", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      dispatch(removeFromWishlist({ id }));
+
       setTimeout(() => {
         setLoader(false);
       }, 1000);
@@ -73,82 +64,66 @@ function ProductsList({ data: { id, title, price, image } }) {
         setLoader(false);
         dispatch(addToWishLists({ id, title, price, image }));
 
-
-
-
-        toast.success(`item ${title} added to wishlist`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-        // setDrawer();
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: true,
+          message: "added to wishlist",
+          type: "success",
+        }));
       }, 1000);
 
       setTimeout(() => {
-          // setDrawer()
-      }, 10000);
-
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: false,
+        }));
+      }, 3000);
     }
   };
 
   const addTo = ({ id, title, price, image }) => {
     setLoader(true);
     if (itemExistArr(id, productState.productReducer.cart)) {
-      toast.warn("already exist", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      setRenderToast((prevState) => ({
+        ...prevState,
+        state: true,
+        message: "already exist",
+        type: "warning",
+      }));
 
       setTimeout(() => {
         setLoader(false);
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: false,
+        }));
       }, 1000);
     } else {
       setTimeout(() => {
         setLoader(false);
         dispatch(addToCart({ id, title, price, image }));
-
-        ReactGA.event({
-          category: 'E-commerce',
-          action: 'Add to Cart',
-          label: 'Product Name',
-          value: 1, // Optional numeric value associated with the event
-        });
-
-
-
-        toast.success(`item ${title} added to cart`, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: true,
+          message: "already exist",
+          type: "warning",
+        }));
         setDrawer();
       }, 1000);
 
       setTimeout(() => {
-          setDrawer()
+        setDrawer();
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: false,
+        }));
       }, 10000);
-
     }
   };
 
-
-  const isInWishlist = productState?.productReducer?.wishlist?.find(item => item.id === id)
+  const isInWishlist = productState?.productReducer?.wishlist?.find(
+    (item) => item.id === id
+  );
 
   const HeartSvg = () => (
     <svg width="2em" height="2em" fill="currentColor" viewBox="0 0 1024 1024">
@@ -159,59 +134,55 @@ function ProductsList({ data: { id, title, price, image } }) {
   const HeartIcon = (props) => <Icon component={HeartSvg} {...props} />;
 
   return (
-    <div> 
-    <div 
-    className={classes.singleParent}
-     onClick={(e) => setSingle(e)}>
-      <span>
-       
+    <div>
+      {renderToast.state && (
+        <Toast
+          message={renderToast.message}
+          type={renderToast.type}
+          duration={3000}
+        />
+      )}
 
+      <div className={classes.singleParent} onClick={(e) => setSingle(e)}>
+        <span>
+          <Row gutter={6}>
+            <Col className="gutter-row" span={4} pull={22}>
+              {loader ? (
+                <Spin />
+              ) : (
+                <PlusCircleOutlined
+                  style={{ fontSize: 24, color: "#72baff" }}
+                  onClick={addToCartHandler}
+                />
+              )}
+            </Col>
 
-<Row gutter={6}> 
-
-<Col className="gutter-row" span={4} pull={22}>
-{loader ? <Spin /> : 
-
-<PlusCircleOutlined style={{fontSize: 24,color: "#72baff"}}           onClick={addToCartHandler}
-/>}
-</Col>
-
-<Col className="gutter-row" span={4} push={22}> 
-{isInWishlist ? 
-    <HeartIcon
-    style={{
-      color: 'hotpink',
-    }}
-    onClick={addToWishList}
-  /> 
-
-:
-<HeartTwoTone twoToneColor="#eb2f96" style={{fontSize: 24}}
-onClick={addToWishList} />
-
-}
-
-</Col>
-
-</Row>
-
-
-
-
-
-       
-      </span>
-      <span className={classes.title}> {nameSplitter(title, 45)}</span>
-      <span className={classes.price}> {price} /$ </span>
-      <span>
+            <Col className="gutter-row" span={4} push={22}>
+              {isInWishlist ? (
+                <HeartIcon
+                  style={{
+                    color: "hotpink",
+                  }}
+                  onClick={addToWishList}
+                />
+              ) : (
+                <HeartTwoTone
+                  twoToneColor="#eb2f96"
+                  style={{ fontSize: 24 }}
+                  onClick={addToWishList}
+                />
+              )}
+            </Col>
+          </Row>
+        </span>
+        <span className={classes.title}> {nameSplitter(title, 45)}</span>
+        <span className={classes.price}> {price} /$ </span>
+        <span>
           {/* <Product3DViewer productImage={image}/> */}
-        <img src={image} className={classes.img} />
-      </span>
-
-          </div>
-               {drawer &&
-                <MiniCart />}
-
+          <img src={image} className={classes.img} />
+        </span>
+      </div>
+      {/* {drawer && <MiniCart />} */}
     </div>
   );
 }
