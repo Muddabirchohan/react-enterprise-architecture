@@ -45,7 +45,7 @@ function CartItems({ data, error, type }) {
   return (
     <div className={classes.singleParent}>
      
-      <Row gutter={16}>
+      <Row >
         <Col className="gutter-row" span={14}>
  
           <Row>

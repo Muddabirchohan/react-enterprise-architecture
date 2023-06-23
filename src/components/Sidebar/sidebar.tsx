@@ -2,9 +2,14 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
-  ShoppingCartOutlined ,
+  ShoppingCartOutlined,
   HeartOutlined,
-  UnorderedListOutlined 
+  UnorderedListOutlined,
+  PieChartOutlined,
+  DesktopOutlined,
+  ContainerOutlined,
+  MailOutlined,
+  AppstoreOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { useState } from "react";
@@ -12,41 +17,51 @@ import classes from "./sideBar.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentView } from "../../features/sideBarSlice";
 import { Navigate, useNavigate } from "react-router-dom";
-
+import type { MenuProps } from "antd";
 
 const { Sider } = Layout;
 const SideBar = () => {
   const [collapsed] = useState(false);
 
-  const dispatch = useDispatch();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
+  type MenuItem = Required<MenuProps>["items"][number];
 
-  const keys = ["Products", "Cart", "Wishlist"];
-
-  const icons = [<UnorderedListOutlined/>,<ShoppingCartOutlined/>,<HeartOutlined />]
-
-  const sideBarList = keys.map((item, index) => {
+  function getItem(
+    label: string,
+    key: React.Key,
+    icon?: React.ReactNode,
+    children?: Menuitem[],
+    type?: "group",
+    onClick?: any
+  ): MenuItem {
     return {
-      key: index,
-      icon: icons[index],
-      label: item,
+      key,
+      icon,
+      children,
+      label,
+      type,
       onClick: () => {
-        dispatch(setCurrentView(item))
-        navigate(`/${item.toLowerCase()}`)
-    }
-    };
-  });
+        navigate(label.toLowerCase())
+      }
+    } as MenuItem;
+  }
 
+  const items: MenuItem[] = [
+    // getItem("Trending", "1", <PieChartOutlined />),
+    getItem("Products", "sub1", <UnorderedListOutlined />, [
+      getItem("Men", "5"),
+      getItem("Women", "6"),
+      getItem("kids", "7"),
+    ]),
+  ];
 
   return (
     <>
       <div>
         <Sider
           style={{
-            // overflow: 'auto',
-            // height: '100%',
             position: "fixed",
             left: 0,
             top: 60,
@@ -57,11 +72,13 @@ const SideBar = () => {
           collapsed={collapsed}
         >
           <Menu
-            style={{ width: 220, height: "100vh" }}
-            theme="dark"
-            mode="inline"
+            style={{ height: "100vh" }}
             defaultSelectedKeys={["1"]}
-            items={sideBarList}
+            defaultOpenKeys={["sub1"]}
+            mode="inline"
+            theme="light"
+            inlineCollapsed={collapsed}
+            items={items}
           />
         </Sider>
       </div>

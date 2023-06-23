@@ -36,7 +36,9 @@ function WishListItem({ data }) {
   const { title, price, image } = data;
 
   return (
-    <div className={`${classes.singleParent}  ${price > 50 && classes.deceased}`}>
+    <div className={`${classes.singleParent}  
+    // ${price > 50 && classes.deceased}
+    `}>
       <span>
         <Row gutter={6}>
           <Col className="gutter-row" span={4} pull={22}>
