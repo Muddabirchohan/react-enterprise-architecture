@@ -26,9 +26,9 @@
 
   .detail {
     color: white;
-    font-size: 12px;
+    font-size: 16px;
     font-family: "Roboto";
-    font-weight: 500;
+    // font-weight: 600px;
   }
 
   .img {
@@ -37,11 +37,29 @@
   }
 
   .title {
-    font-size: 18px;
-    font-weight: 800;
-    color: #ffffff;
-    font-family: "Poppins";
-    font-weight: 400;
+    display: flex;
+
+    .name {
+      font-size: 22px;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: "Poppins";
+      font-weight: 700;
+      width: 310px;
+    }
+
+    .price {
+
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      font-family: "Poppins";
+      font-weight: 700;
+      width: 100px;
+
+  
+    }
+
   }
 
   .desc {
@@ -49,15 +67,32 @@
     font-size: medium;
   }
 
-  .price {
-    width: 100%;
-    height: 32px;
-    font-size: 22px;
-    font-weight: bold;
-    border: 2px solid #ffffff;
-    background-color: #a3a3a3;
-    color: white;
-    border-radius: 8px;
-    text-align: center;
-  }
+  // .price {
+  //   width: 100%;
+  //   height: 32px;
+  //   font-size: 22px;
+  //   font-weight: bold;
+  //   border: 2px solid #ffffff;
+  //   background-color: #a3a3a3;
+  //   color: white;
+  //   border-radius: 8px;
+  //   text-align: center;
+  // }
+
+
+  
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #f2f2f2;
 }

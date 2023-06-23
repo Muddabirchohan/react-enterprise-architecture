@@ -13,6 +13,8 @@ import Checkout from "../pages/checkout/Checkout";
 import Order from "../pages/order/order";
 import ProductDetail from "../pages/products/ProductDetail/productDetail";
 import Wishlist from "src/pages/WishList/wishList";
+import Banner from "src/pages/Banner/baner";
+import BanerLayout from "src/layouts/bannerLayout";
 
 const RouterDefault = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -28,7 +30,9 @@ const RouterDefault = () => {
     // </Router>
     <Router basename="/react-enterprise-architecture">
       <Fragment>
-        <Routes>
+        <Routes>          
+          <Route exact path="/" element={<BanerLayout />} />
+          
           <Route exact path="/" element={<PageLayout />} >
           <Route exact path="/products" element={<Products />} />
           <Route exact path="/products/:id" element={<ProductDetail />} />
