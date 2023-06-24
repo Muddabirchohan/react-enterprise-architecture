@@ -110,8 +110,8 @@ function CartItems({ data, error, type }) {
         <Col className="gutter-row" span={3} pull={2}>
           <div className={`${classes.nameAndPrice} mt-3`}>
             <ConfirmPopup
-              title="Delete the task"
-              description="Are you sure to delete this task?"
+              title="Delete product"
+              description="Are you sure to delete this item?"
               onConfirm={confirm}
               onCancel={cancel}
               okText="Yes"

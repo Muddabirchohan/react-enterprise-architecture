@@ -86,7 +86,7 @@ function ProductDetail() {
           <Rate
             allowHalf
             disabled
-            defaultValue={data.singleProduct.rating.rate}
+            defaultValue={data?.singleProduct?.rating.rate}
             style={{
               paddingBottom: 40,
               display: "flex",
@@ -94,7 +94,7 @@ function ProductDetail() {
             }}
           />
 
-          <div>
+          <div className={classes.detailSectionImage}>
             {" "}
             <img src={image} className={classes.img} />
           </div>
