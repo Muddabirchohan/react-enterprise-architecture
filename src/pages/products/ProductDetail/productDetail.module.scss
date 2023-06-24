@@ -18,14 +18,35 @@
   }
 
   .detailSection {
-    background-color: #a3a3a3;
-    padding: 20px;
+    // background-color: #a3a3a3;
+    padding: 50px;
     border-radius: 10%;
     border: 2px solid #adadad;
+    overflow-y: auto;
+    height: 330px;
+    width: 350px;
+  }
+
+  .detailSection::-webkit-scrollbar {
+    width: 5px;
+  }
+  .detailSection::-webkit-scrollbar-thumb {
+    background-color: silver;
+  }
+
+  .detailSection::-webkit-scrollbar-track-piece:start {
+    margin-top: 30px;
+  }
+
+  .detailSection::-webkit-scrollbar-track-piece:end {
+    margin-bottom: 30px;
+  }
+
+  .detailSectionImage {
+    height: 400px;
   }
 
   .detail {
-    color: white;
     font-size: 16px;
     font-family: "Roboto";
     // font-weight: 600px;
@@ -42,28 +63,24 @@
     .name {
       font-size: 22px;
       font-weight: 800;
-      color: #ffffff;
+      // color: #ffffff;
       font-family: "Poppins";
       font-weight: 700;
       width: 310px;
     }
 
     .price {
-
       font-size: 22px;
       font-weight: 800;
-      color: white;
+      // color: white;
       font-family: "Poppins";
       font-weight: 700;
       width: 100px;
-
-  
     }
-
   }
 
   .desc {
-    color: white;
+    // color: white;
     font-size: medium;
   }
 
@@ -78,17 +95,14 @@
   //   border-radius: 8px;
   //   text-align: center;
   // }
-
-
-  
 }
-
 
 table {
   width: 100%;
   border-collapse: collapse;
 }
-th, td {
+th,
+td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;

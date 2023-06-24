@@ -105,8 +105,8 @@ function ProductsList({ data: { id, title, price, image } }) {
         setRenderToast((prevState) => ({
           ...prevState,
           state: true,
-          message: "already exist",
-          type: "warning",
+          message: "item added to cart",
+          type: "success",
         }));
         setDrawer();
       }, 1000);
@@ -117,7 +117,7 @@ function ProductsList({ data: { id, title, price, image } }) {
           ...prevState,
           state: false,
         }));
-      }, 10000);
+      }, 3000);
     }
   };
 

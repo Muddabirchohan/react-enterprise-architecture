@@ -11,6 +11,7 @@ export const itemExistArr = (id,dataList) => {
       return ids.includes(id);
     }
 
+    console.log("datalist",dataList,"id",id)
     return false;
   };
 

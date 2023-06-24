@@ -51,9 +51,13 @@ export default function Cart({type}) {
             <CartItems key={item.id} data={item} error={errors} type={type} />
           ))}
 
-        <div className={type == "miniCart" ?  classes.checkoutBtn : classes.checkoutMini}>
+        <div className={classes.checkoutBtn}>
           <Button
-          style={{ width: '100%'}}
+          style={{   
+             backgroundColor: "#255eff",
+            color: "white",
+            width: "80%"
+          }}
             onClick={() => {
               dispatch(setCurrentView("checkout"));
               navigate("/checkout");
