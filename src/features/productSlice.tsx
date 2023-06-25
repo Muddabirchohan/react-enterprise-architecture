@@ -58,6 +58,10 @@ export const productSlice = createSlice({
       }
     },
 
+    clearCart: (state, action) => {
+        state.cart = []
+    },
+
     addToCart: (state, action) => {
       if (action.payload) {
         action.payload.quantity = 1;
@@ -152,6 +156,8 @@ export const {
   setSingleProduct,
   addToWishLists,
   removeFromWishlist,
+  clearCart
+  
 } = productSlice.actions;
 
 export default productSlice.reducer;

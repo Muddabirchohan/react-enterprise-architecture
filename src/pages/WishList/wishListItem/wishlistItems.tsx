@@ -37,7 +37,7 @@ function WishListItem({ data }) {
 
   return (
     <div className={`${classes.singleParent}  
-    // ${price > 50 && classes.deceased}
+   
     `}>
       <span>
         <Row gutter={6}>
