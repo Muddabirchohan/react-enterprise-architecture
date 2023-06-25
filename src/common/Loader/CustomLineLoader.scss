@@ -1,0 +1,22 @@
+.custom-line-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.custom-line {
+  width: 20%;
+  height: 4px;
+  background-color: #1890ff; /* Customize the color if needed */
+  animation: custom-line-animation 1s infinite linear;
+}
+
+@keyframes custom-line-animation {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
