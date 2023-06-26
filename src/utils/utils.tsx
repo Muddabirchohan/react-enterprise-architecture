@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 export const nameSplitter = (item,upto) => {
   if (item && item.length > upto) return item.slice(0, upto) + "...";
   return item;
@@ -15,18 +17,16 @@ export const itemExistArr = (id,dataList) => {
     return false;
   };
 
+  // export const UsegenerateProductUrl = (id) => {
+  //   const navigate = useNavigate();
 
-  export const toastCustom = (type,title) => {
-    toast(`item ${title} added to cart`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "colored",
-    });
+  //   const handleProuctClick = () => {
+  //     navigate(`/product/${id}`)
+  //   }
 
-  }
+  //   return {
+  //     handleProuctClick
+  //   }
+
+  // }
 

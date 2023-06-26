@@ -51,7 +51,7 @@ export default function Cart({ type }) {
   };
 
 
-  if(!loader){
+  if(loader){
     return <Loader/>
   }
 
