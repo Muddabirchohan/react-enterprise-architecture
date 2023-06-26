@@ -22,6 +22,8 @@ function ProductsList({ data: { id, title, price, image } }) {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
+  // const [route,setRoute] = UsegenerateProductUrl("")
+
   const productState = useSelector((state) => state);
 
   const [renderToast, setRenderToast] = useState({
@@ -31,6 +33,9 @@ function ProductsList({ data: { id, title, price, image } }) {
   });
 
   const navigate = useNavigate();
+
+
+  // const [handleProuctClick] = UsegenerateProductUrl("")
 
   const setDrawer = useDrawerStore((state) => state.setDrawerState);
   const drawer = useDrawerStore((state) => state.drawerState);
@@ -175,7 +180,7 @@ function ProductsList({ data: { id, title, price, image } }) {
             </Col>
           </Row>
         </span>
-        <span className={classes.title}> {nameSplitter(title, 45)}</span>
+        <span className={classes.title} > {nameSplitter(title, 45)}</span>
         <span className={classes.price}> {price} /$ </span>
         <span>
           {/* <Product3DViewer productImage={image}/> */}

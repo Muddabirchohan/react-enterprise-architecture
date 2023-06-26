@@ -19,26 +19,74 @@ function WishListItem({ data }) {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
+  const [renderToast, setRenderToast] = useState({
+    state: false,
+    message: "",
+    type: "",
+  });
+
+  const productState = useSelector((state) => state);
+
   const navigate = useNavigate();
 
+  const addToCartHandler = (e, data) => {
+    const { id, title, price, image } = data;
 
-  const addToCartHandler = (e) => {
     e.stopPropagation();
     addTo({ id, title, price, image });
+  };
+
+  const addTo = ({ id, title, price, image }) => {
+    setLoader(true);
+    if (itemExistArr(id, productState.productReducer.cart)) {
+      setRenderToast((prevState) => ({
+        ...prevState,
+        state: true,
+        message: "already exist",
+        type: "warning",
+      }));
+
+      setTimeout(() => {
+        setLoader(false);
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: false,
+        }));
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setLoader(false);
+        dispatch(addToCart({ id, title, price, image }));
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: true,
+          message: "item added to cart",
+          type: "success",
+        }));
+      }, 1000);
+
+      setTimeout(() => {
+        // setDrawer();
+        setRenderToast((prevState) => ({
+          ...prevState,
+          state: false,
+        }));
+      }, 3000);
+    }
   };
 
   if (!data) {
     return;
   }
 
-
-
   const { title, price, image } = data;
 
   return (
-    <div className={`${classes.singleParent}  
+    <div
+      className={`${classes.singleParent}  
    
-    `}>
+    `}
+    >
       <span>
         <Row gutter={6}>
           <Col className="gutter-row" span={4} pull={22}>
@@ -47,7 +95,7 @@ function WishListItem({ data }) {
             ) : (
               <PlusCircleOutlined
                 style={{ fontSize: 24, color: "#72baff" }}
-                onClick={addToCartHandler}
+                onClick={(e) => addToCartHandler(e, data)}
               />
             )}
           </Col>
@@ -59,10 +107,7 @@ function WishListItem({ data }) {
       <span className={classes.price}> {price} /$ </span>
       <span>
         {/* <Product3DViewer productImage={image}/> */}
-        <img
-          src={image}
-          className={classes.img}
-        />
+        <img src={image} className={classes.img} />
       </span>
     </div>
   );
