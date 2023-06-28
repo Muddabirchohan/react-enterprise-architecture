@@ -6,35 +6,29 @@ import Header from "../components/Header/Header";
 import ContentSection from "../components/Content/ContentSection";
 import { useSelector } from "react-redux";
 
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import { useEffect } from "react";
 
 const PageLayout = () => {
   const sideBarState = useSelector((state) => state.sideBarSlice);
 
-  useEffect(() => {
-    ReactGA.pageview(window.location.pathname + window.location.search);
-  }, []);
+  return (
+    <div>
+      <Row>
+        <Header />
+      </Row>
 
-  return(
-  <div>
-
-    <Row> 
-    <Header/>
-    </Row>
-
-    <Row>
-
-      <Col span={4}>
-        <SideBar />
-      </Col>
-      <Col span={20}>
-        <Outlet/>
-        {/* <ContentSection type={sideBarState.currentTab} /> */}
-      </Col>
-    </Row>
-  </div>
-)};
+      <Row>
+        <Col span={4}>
+          <SideBar />
+        </Col>
+        <Col span={20}>
+          <Outlet />
+          {/* <ContentSection type={sideBarState.currentTab} /> */}
+        </Col>
+      </Row>
+    </div>
+  );
+};
 
 export default PageLayout;
-

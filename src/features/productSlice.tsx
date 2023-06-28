@@ -10,6 +10,7 @@ interface IState<T> {
   singleProduct: object;
   loadingSingle: boolean;
   errorSingle: string;
+  category: string;
 
 }
 
@@ -22,20 +23,23 @@ const initialStateValue: IState<[]> = {
   wishlist: [],
   singleProduct: {},
   loadingSingle: false,
-  errorSingle: ""
+  errorSingle: "",
+  category: ""
 };
 
-export const fetchProducts = createAsyncThunk("products/fetch", async () => {
-  const response = await fetch("https://fakestoreapi.com/products");
+export const fetchProducts = createAsyncThunk("products/fetch", async (category?: string) => {
+
+  const url = category ? `https://fakestoreapi.com/products/category/${category}` : "https://fakestoreapi.com/products";
+
+  const response = await fetch(url);
+  console.log("res",response)
   const data = await response.json();
   return data;
 });
 
 export const fetchSingle = createAsyncThunk(`products/single`, async (id) => {
-  console.log("asdadsa",id)
   const response = await fetch(`https://fakestoreapi.com/products/${id}`);
   const data = await response.json();
-  console.log("Dataaa",data)
   return data;
 });
 
@@ -105,6 +109,12 @@ export const productSlice = createSlice({
       const total = calcTotal(state.cart);
       state.total = total;
     },
+
+    setCat: (state, action) => {
+      if(action.payload){
+        state.category = action.payload
+      }
+    },
   },
 
   extraReducers: (builder) => {
@@ -156,7 +166,8 @@ export const {
   setSingleProduct,
   addToWishLists,
   removeFromWishlist,
-  clearCart
+  clearCart,
+  setCat
   
 } = productSlice.actions;
 

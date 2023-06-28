@@ -140,6 +140,9 @@ function ProductsList({ data: { id, title, price, image } }) {
 
   return (
     <div>
+
+
+
       {renderToast.state && (
         <Toast
           message={renderToast.message}

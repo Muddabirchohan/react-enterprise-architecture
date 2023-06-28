@@ -30,16 +30,15 @@ const RouterDefault = () => {
     // </Router>
     <Router basename="/react-enterprise-architecture">
       <Fragment>
-        <Routes>          
+        <Routes>
           <Route exact path="/" element={<BanerLayout />} />
-          
-          <Route exact path="/" element={<PageLayout />} >
-          <Route exact path="/products" element={<Products />} />
-          <Route exact path="/products/:id" element={<ProductDetail />} />
-          <Route exact path="/wishlist" element={<Wishlist />} />
-          <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/checkout" element={<Checkout />} />
-          <Route exact path="/order" element={<Order />} />
+          <Route exact path="/" element={<PageLayout />}>
+            <Route exact path="/products" element={<Products />} />
+            <Route exact path="/products/:id" element={<ProductDetail />} />
+            <Route exact path="/wishlist" element={<Wishlist />} />
+            <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/checkout" element={<Checkout />} />
+            <Route exact path="/order" element={<Order />} />
           </Route>
           {/* <Route exact path="/home" element={<Home />} />
           <Route exact path="/products" element={<PageLayout />} />

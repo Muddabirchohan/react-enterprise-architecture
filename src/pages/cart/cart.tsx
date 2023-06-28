@@ -20,7 +20,11 @@ import Loader from "src/common/Loader/Loader";
 //   import("../cart/Cartitems")
 // );
 
-export default function Cart({ type }) {
+export interface ICart {
+  type?: string;
+}
+
+export default function Cart({ type }: ICart) {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
 
@@ -35,26 +39,21 @@ export default function Cart({ type }) {
   const chrckEmptyCart = cart && cart.length > 0;
 
   const emptyCart = () => {
-
     setLoader(true);
     dispatch(clearCart("empty"));
 
-
     setTimeout(() => {
-      setLoader(false)
+      setLoader(false);
     }, 1000);
-
   };
 
   const cancel = () => {
     console.log("canncelled");
   };
 
-
-  if(loader){
-    return <Loader/>
+  if (loader) {
+    return <Loader />;
   }
-
 
   if (!chrckEmptyCart)
     return (
