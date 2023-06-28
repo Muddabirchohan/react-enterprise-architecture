@@ -14,10 +14,8 @@ const ProductLayout = () => (
 
     <Row>
 
-      <Col span={4}>
-        <SideBar />
-      </Col>
-      <Col span={20}>
+
+      <Col span={24}>
         <Products />
       </Col>
     </Row>

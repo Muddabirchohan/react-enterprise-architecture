@@ -10,17 +10,17 @@ export const  useProduct = () => {
 
   const { productReducer } = productState;
 
-  const { products, errors, loading } = productReducer;
+  const { products, errors, loading,category } = productReducer;
 
   useEffect(() => {
     (async () => {
       try {
-        dispatch(fetchProducts());
+        dispatch(fetchProducts(category));
       } catch (err) {
         // setError(err);
       }
     })();
-  }, []);
+  }, [category]);
 
   return {
     errors,

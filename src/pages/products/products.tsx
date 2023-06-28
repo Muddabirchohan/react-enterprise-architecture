@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState ,useMemo, useCallback} from "react";
 import { createPortal } from "react-dom";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,8 +9,9 @@ import classes from "./product.module.scss";
 import AppLoader from "../../common/Loader/Loader";
 import { CustomError } from "../../common/Error/CustomError";
 import Product3D from "../../components/3d/Product3d";
-import {useProduct} from "./product.logic";
+import { useProduct } from "./product.logic";
 import App from "src/App";
+import CategoryTag from "src/components/Category/CategoryTag";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
@@ -24,6 +25,21 @@ import App from "src/App";
 
 export default function Products() {
   const { errors, products, loading } = useProduct();
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+   fetchData()
+  }, []);
+
+  const fetchData = useCallback(() => {
+    fetch("https://fakestoreapi.com/products/categories")
+    .then((res) => res.json())
+    .then((json) => setCategories(json));
+  },[])
+
+
+  // const result = useMemo(() => fetchData(), [categories]);
 
   if (loading)
     return (
@@ -42,10 +58,14 @@ export default function Products() {
     );
 
   return (
+    <div style={{marginTop: 100}}>
+    
+    <CategoryTag categories={categories} />
     <div className={classes.productParent}>
       {/* <Suspense fallback={<span> .... </span>}> */}
       {products &&
         products.map((item) => <ProductsList data={item} error={errors} />)}
+    </div>
     </div>
   );
 }
