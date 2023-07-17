@@ -1,4 +1,10 @@
-import React, { Suspense, useEffect, useState ,useMemo, useCallback} from "react";
+import React, {
+  Suspense,
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 import { createPortal } from "react-dom";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +18,8 @@ import Product3D from "../../components/3d/Product3d";
 import { useProduct } from "./product.logic";
 import App from "src/App";
 import CategoryTag from "src/components/Category/CategoryTag";
+// import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
@@ -24,20 +32,23 @@ import CategoryTag from "src/components/Category/CategoryTag";
 // };
 
 export default function Products() {
+  const { t } = useTranslation();
+
   const { errors, products, loading } = useProduct();
 
   const [categories, setCategories] = useState([]);
 
+
+
   useEffect(() => {
-   fetchData()
+    fetchData();
   }, []);
 
   const fetchData = useCallback(() => {
     fetch("https://fakestoreapi.com/products/categories")
-    .then((res) => res.json())
-    .then((json) => setCategories(json));
-  },[])
-
+      .then((res) => res.json())
+      .then((json) => setCategories(json));
+  }, []);
 
   // const result = useMemo(() => fetchData(), [categories]);
 
@@ -57,15 +68,17 @@ export default function Products() {
       </div>
     );
 
+
   return (
-    <div style={{marginTop: 100}}>
-    
-    <CategoryTag categories={categories} />
-    <div className={classes.productParent}>
-      {/* <Suspense fallback={<span> .... </span>}> */}
-      {products &&
-        products.map((item) => <ProductsList data={item} error={errors} />)}
-    </div>
+    <div style={{ marginTop: 100 }}>
+  
+  <h1>{t('Welcome to React')}</h1>
+      <CategoryTag categories={categories} />
+      <div className={classes.productParent}>
+        {/* <Suspense fallback={<span> .... </span>}> */}
+        {products &&
+          products.map((item) => <ProductsList data={item} error={errors} />)}
+      </div>
     </div>
   );
 }

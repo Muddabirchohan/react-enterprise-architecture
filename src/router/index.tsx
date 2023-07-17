@@ -15,6 +15,8 @@ import ProductDetail from "../pages/products/ProductDetail/productDetail";
 import Wishlist from "src/pages/WishList/wishList";
 import Banner from "src/pages/Banner/baner";
 import BanerLayout from "src/layouts/bannerLayout";
+import Login from "src/components/Login/Login";
+import LoginLayout from "src/layouts/loginLayout";
 
 const RouterDefault = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -40,6 +42,9 @@ const RouterDefault = () => {
             <Route exact path="/checkout" element={<Checkout />} />
             <Route exact path="/order" element={<Order />} />
           </Route>
+
+          <Route exact path="/login" element={<LoginLayout />} />
+
           {/* <Route exact path="/home" element={<Home />} />
           <Route exact path="/products" element={<PageLayout />} />
           <Route exact path="/products/:id" element={<PageLayout />} />
