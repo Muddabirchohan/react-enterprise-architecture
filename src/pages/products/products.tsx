@@ -19,7 +19,7 @@ import { useProduct } from "./product.logic";
 import App from "src/App";
 import CategoryTag from "src/components/Category/CategoryTag";
 // import { useTranslation } from "react-i18next";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
@@ -32,17 +32,18 @@ import { useTranslation } from 'react-i18next';
 // };
 
 export default function Products() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { errors, products, loading } = useProduct();
 
   const [categories, setCategories] = useState([]);
 
-
-
   useEffect(() => {
     fetchData();
   }, []);
+
+
+
 
   const fetchData = useCallback(() => {
     fetch("https://fakestoreapi.com/products/categories")
@@ -68,11 +69,10 @@ export default function Products() {
       </div>
     );
 
-
   return (
     <div style={{ marginTop: 100 }}>
-  
-  <h1>{t('Welcome to React')}</h1>
+
+
       <CategoryTag categories={categories} />
       <div className={classes.productParent}>
         {/* <Suspense fallback={<span> .... </span>}> */}

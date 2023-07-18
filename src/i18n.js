@@ -7,12 +7,22 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      "Welcome to React": "Welcome to React and react-i18next"
+      "Welcome to React": "Welcome to React and react-i18next",
+      "Categories": "Categories",
+      "Cart":"Cart",
+      "Wishlist":"Wishlist"
+
+
     }
   },
   fr: {
     translation: {
-      "Welcome to React": "Bienvenue à React et react-i18next"
+      "Welcome to React": "Bienvenue à React et react-i18next",
+      "Categories": "catégories",
+      "Cart":"Chariot",
+      "Wishlist":"liste de souhaits"
+
+
     }
   }
 };

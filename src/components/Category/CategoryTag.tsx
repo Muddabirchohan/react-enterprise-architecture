@@ -17,10 +17,11 @@ const CategoryTag: React.FC = ({ categories }: any) => {
     }
 
 
+
+
     return(
         <div style={{display: "flex", justifyContent:"center"}}>
         {categories.map((item,index) => {
-            console.log(productState.productReducer.category === item)
           return(
           <Tag style={{fontSize: 14,height: 26,color: "silver"}}  bordered={true} color={productState.productReducer.category === item && "red"} onClick={() => filterProducts(item)}>
               {item}

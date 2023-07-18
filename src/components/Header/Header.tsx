@@ -13,11 +13,16 @@ import {
   UnorderedListOutlined,
 } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { Button, Dropdown, message, Space, Tooltip } from "antd";
+import type { MenuProps } from "antd";
 
 const { Header } = Layout;
 
 const AppHeader = () => {
   const navigate = useNavigate();
+
+  const { t, i18n } = useTranslation();
 
   // const [cartshow,setCartShow] = useState(false);
 
@@ -25,7 +30,7 @@ const AppHeader = () => {
   //     setCartShow(!cartshow)
   // }
 
-  const keys = ["Cart", "Wishlist"];
+  const keys = [t("Cart") || "Cart",t("Wishlist") || "Wishlist"];
 
   const icons = [<ShoppingCartOutlined />, <HeartOutlined />];
 
@@ -40,6 +45,33 @@ const AppHeader = () => {
       },
     };
   });
+
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language);
+  };
+
+  const items: MenuProps["items"] = [
+    {
+      label: "english",
+      key: "en",
+      icon: <UserOutlined />,
+    },
+    {
+      label: "french",
+      key: "fr",
+      icon: <UserOutlined />,
+    },
+  ];
+
+  const handleMenuClick: MenuProps["onClick"] = (e) => {
+    changeLanguage(e.key);
+  };
+
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
 
   return (
     <Header
@@ -60,6 +92,15 @@ const AppHeader = () => {
             {item.icon} {item.label}
           </span>
         ))}
+
+
+          <div> 
+        <Dropdown menu={menuProps}>
+          <Button>
+            <Space>Locale-{i18n.language}</Space>
+          </Button>
+        </Dropdown>
+        </div>
       </div>
     </Header>
   );
