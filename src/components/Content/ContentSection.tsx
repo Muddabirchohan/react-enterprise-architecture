@@ -15,8 +15,6 @@ useEffect(()=>{
     renderContent()
 },[navigate])
 
-
-
     const renderContent = () => {
     
         switch (type) {

@@ -5,36 +5,34 @@ import RouterDefault from "./router";
 import { AuthProvider } from "./auth/AuthContext";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
 import { Provider } from "react-redux";
-import store from "./store/index"
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import store from "./store/index";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 // import 'react-credit-cards-2/dist/es/styles-compiled.css';
-import 'react-credit-cards-2/dist/lib/styles.scss';
-import "./index.scss"
-import ReactGA from 'react-ga';
+import "react-credit-cards-2/dist/lib/styles.scss";
+import "./index.scss";
+import ReactGA from "react-ga";
 
-
+import './i18n';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
+ReactGA.initialize("G-TKKDBJP15C");
 
-
-ReactGA.initialize('G-TKKDBJP15C');
-
-console.log("react ga",ReactGA)
+console.log("react ga", ReactGA);
 
 const queryClient = new QueryClient();
-
 
 root.render(
   <React.StrictMode>
     {/* <QueryClientProvider client={queryClient}> */}
+
     <Provider store={store}>
       <AuthProvider>
-        <RouterDefault />
+      
+          <RouterDefault />
       </AuthProvider>
       <ToastContainer />
-
-      </Provider>
+    </Provider>
 
     {/* </QueryClientProvider> */}
   </React.StrictMode>

@@ -113,6 +113,7 @@ import { setCurrentView } from "../../features/sideBarSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import type { MenuProps } from "antd";
 import { setCat } from "src/features/productSlice";
+import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -123,7 +124,9 @@ const SideBar = () => {
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  const { t } = useTranslation();
 
   type MenuItem = Required<MenuProps>["items"][number];
 
@@ -154,7 +157,7 @@ const SideBar = () => {
   const items: MenuItem[] = [
     {
       key: "sub1",
-      label: "Categories",
+      label: t("Categories") || "Categories",
       icon: <UnorderedListOutlined />,
       children: generateSubMenuItems(),
     },
