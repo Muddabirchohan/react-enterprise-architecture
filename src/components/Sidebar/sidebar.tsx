@@ -124,10 +124,9 @@ const SideBar = () => {
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-
-  const {t} = useTranslation()
+  const { t } = useTranslation();
 
   type MenuItem = Required<MenuProps>["items"][number];
 

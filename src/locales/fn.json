@@ -1,0 +1,16 @@
+{
+    "Welcome to React": "Bienvenue à React et react-i18next",
+    "Categories": "catégories",
+    "Cart": "Chariot",
+    "Wishlist": "liste de souhaits",
+    "SizeGuide": "Guide des tailles",
+    "Add": "Ajouter",
+    "CartTotal" : "Total du panier",
+    "EmptyCart": "Panier vide",
+    "Checkout": "Vérifier",
+    "EmptyCartMessage": "Votre panier est actuellement vide, ajoutez un ou plusieurs articles",
+    "Color": "couleur",
+    "Size": "taille",
+    "Quantity": "quantité",
+    "Price": "Prix"
+  }

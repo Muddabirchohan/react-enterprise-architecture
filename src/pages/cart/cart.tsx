@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import EmptyScreen from "./../../assets/empty/shopping-cart.png";
 import ConfirmPopup from "src/common/CofirmPopup/confirmPopup";
 import Loader from "src/common/Loader/Loader";
+import { useTranslation } from "react-i18next";
 
 // const CartItem = React.lazy(() =>
 //   import("../cart/Cartitems")
@@ -27,6 +28,9 @@ export interface ICart {
 export default function Cart({ type }: ICart) {
   const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
+
+  const { t, i18n } = useTranslation();
+
 
   const navigate = useNavigate();
 
@@ -72,7 +76,7 @@ export default function Cart({ type }: ICart) {
       >
         {type !== "miniCart" && (
           <>
-            <span> Cart Total :</span>
+            <span> {t("CartTotal") || "Cart Total"}:</span>
             <span>{total.toFixed(0) || 0}</span>
           </>
         )}
@@ -111,7 +115,7 @@ export default function Cart({ type }: ICart) {
             }}
           >
             {" "}
-            Checkout{" "}
+            {t("Checkout") || "Checkout"  }{" "}
           </Button>
         </div>
       </div>

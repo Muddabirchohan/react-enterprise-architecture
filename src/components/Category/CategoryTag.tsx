@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCat } from "src/features/productSlice";
 
 const CategoryTag: React.FC = ({ categories }: any) => {
+
+    console.log("categories",categories)
+
     const type = ["orange","red","magenta","success","processing"]
 
     const dispatch = useDispatch()

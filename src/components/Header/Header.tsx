@@ -30,7 +30,7 @@ const AppHeader = () => {
   //     setCartShow(!cartshow)
   // }
 
-  const keys = [t("Cart") || "Cart",t("Wishlist") || "Wishlist"];
+  const keys = [t("Cart") || "Cart",t("Wishlist") || "Wishlist", "Products"];
 
   const icons = [<ShoppingCartOutlined />, <HeartOutlined />];
 
