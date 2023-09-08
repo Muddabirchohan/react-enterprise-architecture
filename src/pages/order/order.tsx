@@ -14,7 +14,7 @@ export default function Order() {
 
   const navigate = useNavigate();
 
-  const [compType, setCompType] = useState("order-summary");
+  const [compType, setCompType] = useState<string>("order-summary");
 
   const productState = useSelector((state) => state);
 

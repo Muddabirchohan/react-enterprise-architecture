@@ -6,11 +6,7 @@ import classes from "./orderSummary.module.scss";
 import { addToCart, deleteFromCart, icreaseQuantity } from "../../features/productSlice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import {
-DeleteFilled,
-DeleteOutlined
-  } from '@ant-design/icons';
-import ConfirmPopup from "../../common/CofirmPopup/confirmPopup";
+
 
 function CartItemsOrder({ data, error }) {
   const { title, price, image, quantity, id } = data;
@@ -18,13 +14,13 @@ function CartItemsOrder({ data, error }) {
 
   const dispatch = useDispatch();
 
-  const stock = ["In-Stock", "Out of Stock"];
-  const color = ["Red", "blue", "Black"];
-  const size = ["S", "M", "L"];
+  const stock:string[] = ["In-Stock", "Out of Stock"];
+  const color:string[] = ["Red", "blue", "Black"];
+  const size:string[] = ["S", "M", "L"];
 
   const [quan, setQuan] = useState(quantity || 0);
 
-  const onChange = (e) => {
+  const onChange = (e: { target: { value: any; }; }) => {
     setQuan(e.target.value);
     dispatch(icreaseQuantity({ id: id, quantity: e.target.value }));
   };

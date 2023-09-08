@@ -3,20 +3,23 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCat } from "src/features/productSlice";
 
-const CategoryTag: React.FC = ({ categories }: any) => {
 
-    console.log("categories",categories)
 
-    const type = ["orange","red","magenta","success","processing"]
+interface MyComponentProps {
+  categories: string[]; // Define the type for the categories prop
+}
+
+const CategoryTag: React.FC<MyComponentProps> = ({ categories }) => {
+
+
 
     const dispatch = useDispatch()
 
     const productState:any = useSelector((state) => state);
 
 
-    const filterProducts = (category) => {
+    const filterProducts = (category:String) => {
         dispatch(setCat(category.toLowerCase()));
-
     }
 
 

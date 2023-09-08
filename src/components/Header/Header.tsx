@@ -19,22 +19,23 @@ import type { MenuProps } from "antd";
 
 const { Header } = Layout;
 
+interface ISidebarItems  {
+  key: number;
+  icon: JSX.Element;
+  label: string;
+  onClick: () => void;
+}
+
 const AppHeader = () => {
   const navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
 
-  // const [cartshow,setCartShow] = useState(false);
-
-  // const showCart = () => {
-  //     setCartShow(!cartshow)
-  // }
-
   const keys = [t("Cart") || "Cart",t("Wishlist") || "Wishlist", "Products"];
 
   const icons = [<ShoppingCartOutlined />, <HeartOutlined />];
 
-  const sideBarList = keys.map((item, index) => {
+  const sideBarList:ISidebarItems[] = keys.map((item, index) => {
     return {
       key: index,
       icon: icons[index],

@@ -6,7 +6,7 @@ import { itemExistArr, nameSplitter } from "../../../utils/utils";
 // import classes from "./../product.module.scss";
 import { Button, Col, Drawer, Row, Spin } from "antd";
 import { ToastContainer, toast } from "react-toastify";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { setCurrentView } from "../../../features/sideBarSlice";
 import { useNavigate } from "react-router-dom";
 import { useDrawerStore } from "../../../store/rootZustand";
@@ -15,11 +15,18 @@ import { PlusCircleOutlined, HeartTwoTone } from "@ant-design/icons";
 import Icon, { HomeOutlined } from "@ant-design/icons";
 import classes from "./../wishlist.module.scss";
 
+
+interface IToast {
+  state: boolean;
+  message: string;
+  type: string;
+}
+
 function WishListItem({ data }) {
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState<boolean>(false);
 
-  const [renderToast, setRenderToast] = useState({
+  const [renderToast, setRenderToast] = useState<IToast>({
     state: false,
     message: "",
     type: "",
@@ -29,7 +36,7 @@ function WishListItem({ data }) {
 
   const navigate = useNavigate();
 
-  const addToCartHandler = (e, data) => {
+  const addToCartHandler = (e: MouseEvent<HTMLSpanElement, MouseEvent>, data: { id: any; title: any; price: any; image: any; }) => {
     const { id, title, price, image } = data;
 
     e.stopPropagation();

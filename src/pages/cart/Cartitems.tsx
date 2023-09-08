@@ -9,7 +9,7 @@ import {
   icreaseQuantity,
 } from "../../features/productSlice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { DeleteFilled, DeleteOutlined } from "@ant-design/icons";
 import ConfirmPopup from "../../common/CofirmPopup/confirmPopup";
 
@@ -18,13 +18,13 @@ function CartItems({ data, error, type }) {
 
   const dispatch = useDispatch();
 
-  const stock = ["In-Stock", "Out of Stock"];
-  const color = ["Red", "blue", "Black"];
-  const size = ["S", "M", "L"];
+  const stock:string[] = ["In-Stock", "Out of Stock"];
+  const color:string[] = ["Red", "blue", "Black"];
+  const size:string[] = ["S", "M", "L"];
 
-  const [quan, setQuan] = useState(quantity || 0);
+  const [quan, setQuan] = useState<Number|String>(quantity || 0);
 
-  const onChange = (e) => {
+  const onChange = (e: { target: { value: SetStateAction<Number>; }; }) => {
     setQuan(e.target.value);
     dispatch(icreaseQuantity({ id: id, quantity: e.target.value }));
   };

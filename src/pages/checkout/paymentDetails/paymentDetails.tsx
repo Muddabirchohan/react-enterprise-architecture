@@ -2,22 +2,31 @@ import { Input } from 'antd';
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2';
 
+
+interface IPaymentState {
+  number: string;
+    expiry: string;
+    cvc: string;
+    name: string;
+    focus: boolean;
+}
+
 const PaymentForm = () => {
-  const [state, setState] = useState({
+  const [state, setState] = useState<IPaymentState>({
     number: '',
     expiry: '02/23',
     cvc: '',
     name: 'MUDDABIR CHOHAN',
-    focus: '',
+    focus: false,
   });
 
-  const handleInputChange = (evt) => {
+  const handleInputChange = (evt: { target: { name: any; value: any; }; }) => {
     const { name, value } = evt.target;
     
     setState((prev) => ({ ...prev, [name]: value }));
   }
 
-  const handleInputFocus = (evt) => {
+  const handleInputFocus = (evt: { target: { name: any; }; }) => {
     setState((prev) => ({ ...prev, focus: evt.target.name }));
   }
 

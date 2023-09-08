@@ -17,6 +17,7 @@ import Banner from "src/pages/Banner/baner";
 import BanerLayout from "src/layouts/bannerLayout";
 import Login from "src/components/Login/Login";
 import LoginLayout from "src/layouts/loginLayout";
+import App from "src/App";
 
 const RouterDefault = () => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -24,41 +25,42 @@ const RouterDefault = () => {
   return (
     // <Router basename="/react-enterprise-architecture">
     //   <Routes>
-    //   <Route exact path="/" element={<About />} />
+    //   <Route  path="/" element={<About />} />
 
-    //       <Route exact path="/about" element={<PrivateRoute />}>
+    //       <Route  path="/about" element={<PrivateRoute />}>
     //     </Route>
     //   </Routes>
     // </Router>
     <Router basename="/react-enterprise-architecture">
       <Fragment>
         <Routes>
-          <Route exact path="/" element={<BanerLayout />} />
-          <Route exact path="/" element={<PageLayout />}>
-            <Route exact path="/products" element={<Products />} />
-            <Route exact path="/products/:id" element={<ProductDetail />} />
-            <Route exact path="/wishlist" element={<Wishlist />} />
-            <Route exact path="/cart" element={<Cart />} />
-            <Route exact path="/checkout" element={<Checkout />} />
-            <Route exact path="/order" element={<Order />} />
+          <Route  path="/" element={<BanerLayout />} />
+          <Route  path="/" element={<PageLayout />}>
+          <Route  path="/app" element={<App />} />
+            <Route  path="/products" element={<Products />} />
+            <Route  path="/products/:id" element={<ProductDetail />} />
+            <Route  path="/wishlist" element={<Wishlist />} />
+            <Route  path="/cart" element={<Cart />} />
+            <Route  path="/checkout" element={<Checkout />} />
+            <Route  path="/order" element={<Order />} />
           </Route>
 
-          <Route exact path="/login" element={<LoginLayout />} />
+          <Route  path="/login" element={<LoginLayout />} />
 
-          {/* <Route exact path="/home" element={<Home />} />
-          <Route exact path="/products" element={<PageLayout />} />
-          <Route exact path="/products/:id" element={<PageLayout />} />
-          <Route exact path="/cart" element={<PageLayout />} />
-          <Route exact path="/checkout" element={<PageLayout />} />
-          <Route exact path="/order" element={<PageLayout />} />
+          {/* <Route  path="/home" element={<Home />} />
+          <Route  path="/products" element={<PageLayout />} />
+          <Route  path="/products/:id" element={<PageLayout />} />
+          <Route  path="/cart" element={<PageLayout />} />
+          <Route  path="/checkout" element={<PageLayout />} />
+          <Route  path="/order" element={<PageLayout />} />
 
 
           <Route
-            exact
+            
             path="/about"
             element={<PrivateRoute isAuthenticated={isAuthenticated} />}
           >
-            <Route exact path="" element={<About />} />
+            <Route  path="" element={<About />} />
             
           </Route> */}
         </Routes>

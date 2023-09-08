@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-interface IState<T> {
+export interface IState<T> {
   loading: boolean;
   products: Array<T>;
   errors: string;

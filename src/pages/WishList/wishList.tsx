@@ -13,26 +13,16 @@ import classes from "./wishlist.module.scss";
 import wishlistEmpty from "./../../assets/empty/wishlist-empty.png"
 import { EmptyState } from "src/common/EmptyState/emptyState";
 
-
-// const ProductsList = React.lazy(() =>
-//   import("../products/productsList")
-// );
-
-// const fetchData = async () => {
-//   const response = await fetch("https://fakestoreapi.com/products");
-//   const data = await response.json();
-//   return data;
-// };
+import { IState } from "../../features/productSlice";
 
 export default function Wishlist() {
 
-const {wishlist} = useSelector(state => state.productReducer)
+const {wishlist}:IState<[]> = useSelector((state:IState<[]>) => state.productReducer)
 
 
 const chrckEmptyCart = wishlist && wishlist.length > 0;
 
 if (!chrckEmptyCart) return <EmptyState msg={"You'r wishlist is currently empty ,add any item(s)"} image={wishlistEmpty} />;
-
 
 
   return (

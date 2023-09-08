@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export const nameSplitter = (item,upto) => {
+export const nameSplitter = (item:string,upto:number) => {
   if (item && item.length > upto) return item.slice(0, upto) + "...";
   return item;
 };
@@ -13,7 +13,6 @@ export const itemExistArr = (id,dataList) => {
       return ids.includes(id);
     }
 
-    console.log("datalist",dataList,"id",id)
     return false;
   };
 

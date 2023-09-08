@@ -13,8 +13,8 @@ import { CustomError } from "src/common/Error/CustomError";
 
 function ProductDetail() {
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
-  const [sizeGuide, setSizeGuide] = useState(false);
+  const [loader, setLoader] = useState<boolean>(false);
+  const [sizeGuide, setSizeGuide] = useState<boolean>(false);
   const params = useParams();
   const data = useProductSingle(params.id);
 

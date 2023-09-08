@@ -6,9 +6,9 @@ export default function CheckoutCart({classes,data}) {
 
     const {title,price,quantity,image} = data
     
-  const stock = ["In-Stock", "Out of Stock"];
-  const color = ["Red", "blue", "Black"];
-  const size = ["S", "M", "L"];
+  const stock:string[] = ["In-Stock", "Out of Stock"];
+  const color:string[] = ["Red", "blue", "Black"];
+  const size:string[] = ["S", "M", "L"];
 
 
   return (

@@ -27,7 +27,7 @@ export interface ICart {
 
 export default function Cart({ type }: ICart) {
   const dispatch = useDispatch();
-  const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState<Boolean>(false);
 
   const { t, i18n } = useTranslation();
 

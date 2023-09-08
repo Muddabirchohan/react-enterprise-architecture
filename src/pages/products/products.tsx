@@ -21,6 +21,7 @@ import CategoryTag from "src/components/Category/CategoryTag";
 // import { useTranslation } from "react-i18next";
 import { useTranslation } from "react-i18next";
 import { getCachedData } from "src/utils/cacheUtil";
+import Deffered from "src/components/deferredValue/deffered";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
@@ -85,9 +86,9 @@ const CachedApiComponent = () => {
 
   const { errors, products, loading } = useProduct();
 
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<string[]>([]);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchData =  async () => {
@@ -119,6 +120,7 @@ const CachedApiComponent = () => {
 
   return (
     <div>
+      {/* <Deffered/> */}
       <div style={{ marginTop: 100 }}>
         <CategoryTag categories={categories} />
         <div className={classes.productParent}>
