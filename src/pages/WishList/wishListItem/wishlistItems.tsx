@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { CustomError } from "../../../common/Error/CustomError";
 import AppLoader from "../../../common/Loader/Loader";
-import { addToCart } from "../../../features/productSlice";
+import { addToCart, removeFromWishlist } from "../../../features/productSlice";
 import { itemExistArr, nameSplitter } from "../../../utils/utils";
 // import classes from "./../product.module.scss";
 import { Button, Col, Drawer, Row, Spin } from "antd";
@@ -42,6 +42,10 @@ function WishListItem({ data }) {
     e.stopPropagation();
     addTo({ id, title, price, image });
   };
+
+  const removeItem = (id) => {
+    dispatch(removeFromWishlist({ id }));
+  }
 
   const addTo = ({ id, title, price, image }) => {
     setLoader(true);
@@ -100,10 +104,9 @@ function WishListItem({ data }) {
             {loader ? (
               <Spin />
             ) : (
-              <PlusCircleOutlined
+              <><PlusCircleOutlined
                 style={{ fontSize: 24, color: "#72baff" }}
-                onClick={(e) => addToCartHandler(e, data)}
-              />
+                onClick={(e) => addToCartHandler(e, data)} /><button onClick={() => removeItem(data.id)}> delete </button></>
             )}
           </Col>
 
@@ -114,7 +117,8 @@ function WishListItem({ data }) {
       <span className={classes.price}> {price} /$ </span>
       <span>
         {/* <Product3DViewer productImage={image}/> */}
-        <img src={image} className={classes.img} />
+        <img src={image} className={classes.img} />\
+
       </span>
     </div>
   );

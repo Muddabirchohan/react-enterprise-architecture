@@ -22,6 +22,7 @@ import CategoryTag from "src/components/Category/CategoryTag";
 import { useTranslation } from "react-i18next";
 import { getCachedData } from "src/utils/cacheUtil";
 import Deffered from "src/components/deferredValue/deffered";
+import axiosInstance from "src/globalRequests/requestHandlers";
 
 // const ProductsList = React.lazy(() =>
 //   import("../products/productsList")
@@ -90,17 +91,30 @@ const CachedApiComponent = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
+  const fetchData =  async () => {
+
+    const apiUrl = "https://fakestoreapi.com/products/categories";
+    // const cachedData = await getCachedData(apiUrl);
+
+// const axiosInstance = axios.create({
+//   baseURL: 'http://api.example.com', // Replace with your API base URL
+// });
+
+const cachedData = await axiosInstance.get(apiUrl); // Replace with your API endpoint
+
+    console.log("nnew ",cachedData)
+    setCategories(cachedData.data);
+    setIsLoading(false);
+  };
+
+  // const fetchMemo = useMemo(() => fetchData,[])
+
   useEffect(() => {
-    const fetchData =  async () => {
-      const apiUrl = "https://fakestoreapi.com/products/categories";
-      const cachedData = await getCachedData(apiUrl);
-      console.log("nnew ",cachedData)
-      setCategories(cachedData);
-      setIsLoading(false);
-    };
 
     fetchData();
   }, []); 
+
+
 
   if (loading)
     return (

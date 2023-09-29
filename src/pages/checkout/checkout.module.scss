@@ -20,7 +20,7 @@
       color: #8d8080;
       border-radius: 8px;
       text-align: start;
-      line-height: 5px;
+      line-height: 15px;
     }
   }
 
@@ -44,16 +44,18 @@
   .orderSummary {
     background-color: #32445e;
     padding: 20px;
-    width: 310px;
+    width: 330px;
     height: 75vh;
     color: white;
     font-size: 42px !important;
     font-size: -54px;
     font-weight: bolder;
     line-height: 10px;
+    
 
     div {
         padding-top: 10px;
+        line-height: 18px;
     }
 
   }
@@ -61,7 +63,7 @@
   .order {
     button {
       margin-top: 10px;
-      width: 53vh;
+      width: 46vh;
       background-color: #9f9f9f;
       color: white;
       font-size: 16px;

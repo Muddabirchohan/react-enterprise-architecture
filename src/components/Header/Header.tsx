@@ -87,11 +87,15 @@ const AppHeader = () => {
       }}
     >
       <div className="logo" />
-      <div style={{ display: "flex", justifyContent: "end", gap: "61px" }}>
+      <div style={{ display: "flex", justifyContent: "end", gap: "40px" }}>
         {sideBarList.map((item) => (
-          <span style={{ color: "blue" }} onClick={item.onClick}>
-            {item.icon} {item.label}
-          </span>
+          <div onClick={item.onClick}>
+            <span style={{ color: "blue",marginRight: 6 }} >
+            {item.icon}
+          </span><span >
+              {item.label}
+            </span>
+            </div>
         ))}
 
 

@@ -2,13 +2,13 @@ import React, { useRef } from "react";
 import classes from "./customSuccess.module.scss";
 import SuccessScreen from "./../../assets/success/tick.jpg"
 
-export const CustomSuccess = (props) => {
+export const CustomSuccess = () => {
 
     const useUniqueId = () => {
         const idRef = useRef();
       
         if (!idRef.current) {
-          idRef.current = Math.random().toString(36).substr(2, 9);
+          idRef.current = Math.random().toString(36).substr(2, 9) ;
         }
       
         return idRef.current;
